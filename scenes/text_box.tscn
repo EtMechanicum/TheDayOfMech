@@ -26,32 +26,35 @@ region = Rect2(63.960487, 47.77275, 16.142563, 16.371193)
 [node name="TextBox" type="CanvasLayer" unique_id=1373118513]
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=228998126]
-custom_minimum_size = Vector2(160, 160)
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+offset_left = -450.0
+offset_top = -133.0
+offset_right = 450.0
+offset_bottom = 127.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="MarginContainer" unique_id=808693587]
+custom_minimum_size = Vector2(900, 240)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wscpg")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=580412599]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_bottom = 32
 
 [node name="Panel" type="Panel" parent="MarginContainer/Panel/MarginContainer" unique_id=1399787377]
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0dhrm")
 
@@ -64,6 +67,8 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_dyarx")
 theme_override_font_sizes/font_size = 36
+text = "Example text: 90
+Example text 2: 90"
 horizontal_alignment = 1
 vertical_alignment = 1
 

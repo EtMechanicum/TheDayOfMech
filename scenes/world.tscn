@@ -56,19 +56,24 @@ func _on_reveneus_pressed() -> void:
 	var report = report.instantiate()
 	var container = report.get_node(\"MarginContainer/Panel/MarginContainer/VBoxContainer\")
 	var revenue_text = \"Total revenue since last time: %d\"%[GameManager.revenue]
-	var revenue_label = Label.new()
-	revenue_label.text = revenue_text
-	container.add_child(revenue_label)
+	#var revenue_label = Label.new()
+	#revenue_label.text = revenue_text
+	#container.add_child(revenue_label)
 	var went_away_text = \"Customers went away: %d\"%[GameManager.went_away_count]
-	var went_away_label = Label.new()
-	went_away_label.text = went_away_text
-	container.add_child(went_away_label)
+	#var went_away_label = Label.new()
+	#went_away_label.text = went_away_text
+	#container.add_child(went_away_label)
+	var label = container.get_node(\"Label\")
+	label.text = \"\"\"
+		%s
+		%s
+	\"\"\"%[revenue_text, went_away_text]
 	#OK button
-	var ok_button = Button.new()
+	var ok_button = container.get_node(\"OkButton\")
 	ok_button.pressed.connect(_on_ok_button_pressed)
-	ok_button.text = \"OK\"
-	ok_button.add_theme_font_size_override(\"font_size\", 48)
-	container.add_child(ok_button)
+	#ok_button.text = \"OK\"
+	#ok_button.add_theme_font_size_override(\"font_size\", 48)
+	#container.add_child(ok_button)
 	add_child(report)
 	GameManager.player_money += GameManager.revenue
 "
@@ -93,6 +98,10 @@ region = Rect2(16, 16, 16, 16)
 atlas = ExtResource("3_jhx03")
 region = Rect2(32, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7kh3"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_lakw3"]
 atlas = ExtResource("7_e3hyu")
 region = Rect2(0, 0, 150, 32)
@@ -100,10 +109,6 @@ region = Rect2(0, 0, 150, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7t5mc"]
 atlas = ExtResource("3_jhx03")
 region = Rect2(64, 52, 16, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w7kh3"]
-atlas = ExtResource("3_jhx03")
-region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3hyu"]
 atlas = ExtResource("3_jhx03")
@@ -136,6 +141,7 @@ bg_color = Color(1, 0.6666667, 0.36862746, 1)
 script = ExtResource("1_q5onr")
 
 [node name="MainMenu" type="Control" parent="." unique_id=133412698]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -333,6 +339,34 @@ expand_mode = 1
 [node name="MachineOptions" parent="." unique_id=1349014209 instance=ExtResource("7_i7141")]
 visible = false
 
+[node name="MarginContainer" type="MarginContainer" parent="MachineOptions" unique_id=384095867]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MachineOptions/MarginContainer" unique_id=2120063119]
+layout_mode = 2
+theme_override_constants/separation = 96
+alignment = 1
+
+[node name="ToOverview" type="Button" parent="MachineOptions/MarginContainer/HBoxContainer" unique_id=384585301]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MachineOptions/MarginContainer/HBoxContainer/ToOverview" unique_id=368062988]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_w7kh3")
+
 [node name="Store" type="Control" parent="." unique_id=1591577076]
 visible = false
 layout_mode = 3
@@ -353,7 +387,6 @@ grow_vertical = 2
 texture = ExtResource("4_e3hyu")
 
 [node name="ShopMenu" type="Control" parent="Store/TextureRect" unique_id=424097577]
-visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -365,6 +398,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MenuTexture" type="TextureRect" parent="Store/TextureRect/ShopMenu" unique_id=1748300357]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -777,7 +811,6 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_o8fc1")
 
 [node name="MachineStatus" type="Control" parent="." unique_id=794672676]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -795,24 +828,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_q5onr")
 expand_mode = 1
-
-[node name="Buttons" type="MarginContainer" parent="MachineStatus/TextureRect" unique_id=1294178412]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MachineStatus/TextureRect/Buttons" unique_id=2037474594]
-layout_mode = 2
-
-[node name="ToOverview" type="Button" parent="MachineStatus/TextureRect/Buttons/HBoxContainer" unique_id=1932407325]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-text = "Back To 
-Overview"
 
 [node name="IceMenu" type="MarginContainer" parent="MachineStatus/TextureRect" unique_id=1100617175]
 custom_minimum_size = Vector2(256, 256)
@@ -849,6 +864,34 @@ offset_bottom = 651.0
 
 [node name="DeviceOpening" parent="MachineStatus/TextureRect/IceContainer" unique_id=2060790168 instance=ExtResource("10_e3hyu")]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MachineStatus/TextureRect" unique_id=851455705]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MachineStatus/TextureRect/MarginContainer" unique_id=1519680661]
+layout_mode = 2
+theme_override_constants/separation = 96
+alignment = 1
+
+[node name="ToOverview" type="Button" parent="MachineStatus/TextureRect/MarginContainer/HBoxContainer" unique_id=811305628]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MachineStatus/TextureRect/MarginContainer/HBoxContainer/ToOverview" unique_id=1725112463]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_w7kh3")
 
 [node name="Wastelands" type="Control" parent="." unique_id=1913597111]
 visible = false
@@ -943,6 +986,7 @@ texture = SubResource("AtlasTexture_o8fc1")
 [connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/Reveneus" to="MachineOverview" method="_on_reveneus_pressed"]
 [connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToMachineStatus" to="." method="_to_machine_status_pressed"]
 [connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToHome" to="." method="_on_to_home_pressed"]
+[connection signal="pressed" from="MachineOptions/MarginContainer/HBoxContainer/ToOverview" to="." method="_to_vending_mechine"]
 [connection signal="pressed" from="Store/TextureRect/ShopMenu/MenuTexture/OkButton" to="Store" method="_on_ok_button_pressed"]
 [connection signal="pressed" from="Store/TextureRect/MarginContainer/HBoxContainer/ToWastelands" to="." method="_on_to_wastelands_button"]
 [connection signal="pressed" from="Store/TextureRect/MarginContainer/HBoxContainer/Buy" to="Store" method="_on_buy_pressed"]
@@ -958,6 +1002,6 @@ texture = SubResource("AtlasTexture_o8fc1")
 [connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/InventoryButton" to="Home" method="_on_inventory_pressed"]
 [connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/ToWastelands" to="." method="_on_to_wastelands_button"]
-[connection signal="pressed" from="MachineStatus/TextureRect/Buttons/HBoxContainer/ToOverview" to="." method="_back_to_machine_overview_button"]
+[connection signal="pressed" from="MachineStatus/TextureRect/MarginContainer/HBoxContainer/ToOverview" to="." method="_to_vending_mechine"]
 [connection signal="pressed" from="Wastelands/TextureRect/MarginContainer/HBoxContainer/ToHome" to="." method="_on_to_home_pressed"]
 [connection signal="pressed" from="Wastelands/TextureRect/MarginContainer/HBoxContainer/ToStore" to="." method="_to_store_from_machine"]

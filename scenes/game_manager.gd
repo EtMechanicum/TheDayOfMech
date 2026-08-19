@@ -63,7 +63,7 @@ func _ready() -> void:
 	ice_warning.start()
 	#customer timer
 	customer_timer = Timer.new()
-	customer_timer.wait_time = randi_range(60, 1200) #two seconds - two minutes for now
+	customer_timer.wait_time = randi_range(0, 600) #two seconds - two minutes for now
 	add_child(customer_timer)
 	customer_timer.timeout.connect(_on_customer_timer_timeout)
 	customer_timer.start()
