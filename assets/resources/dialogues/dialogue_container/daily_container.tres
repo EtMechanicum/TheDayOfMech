@@ -5,9 +5,15 @@
 [ext_resource type="Resource" uid="uid://cl8e1vqgridk8" path="res://assets/resources/dialogues/dialy/hope_ya_good.tres" id="3_7q7d1"]
 [ext_resource type="Script" uid="uid://c70ii38clru4w" path="res://dialogue_container.gd" id="3_eab1f"]
 [ext_resource type="Resource" uid="uid://c036kjnlt5d2q" path="res://assets/resources/dialogues/dialy/ants.tres" id="4_1s52s"]
+[ext_resource type="Resource" uid="uid://c2ty0hvhmf0jd" path="res://assets/resources/dialogues/dialy/summer1.tres" id="5_vfo88"]
+[ext_resource type="Resource" uid="uid://3rbaey1v6wf8" path="res://assets/resources/dialogues/dialy/bored1.tres" id="6_3iufu"]
+[ext_resource type="Resource" uid="uid://dt0na7nvwlces" path="res://assets/resources/dialogues/dialy/tip1.tres" id="7_nm51v"]
+[ext_resource type="Resource" uid="uid://b3vq2wml0wivd" path="res://assets/resources/dialogues/dialy/bored2.tres" id="8_nm51v"]
+[ext_resource type="Resource" uid="uid://itwtg5r6l3qq" path="res://assets/resources/dialogues/dialy/lore1.tres" id="9_456qi"]
+[ext_resource type="Resource" uid="uid://c2jtwwwyqrrwi" path="res://assets/resources/dialogues/dialy/tip2.tres" id="10_456qi"]
 
 [resource]
 script = ExtResource("3_eab1f")
 category = "daily"
-dialogues = Array[ExtResource("1_7tlie")]([ExtResource("2_hsmen"), ExtResource("3_7q7d1"), ExtResource("4_1s52s")])
+dialogues = Array[ExtResource("1_7tlie")]([ExtResource("2_hsmen"), ExtResource("3_7q7d1"), ExtResource("4_1s52s"), ExtResource("5_vfo88"), ExtResource("6_3iufu"), ExtResource("7_nm51v"), ExtResource("8_nm51v"), ExtResource("9_456qi"), ExtResource("10_456qi")])
 metadata/_custom_type_script = "uid://c70ii38clru4w"

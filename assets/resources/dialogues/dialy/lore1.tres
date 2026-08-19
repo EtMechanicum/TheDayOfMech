@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://itwtg5r6l3qq"]
+
+[ext_resource type="Script" uid="uid://8nm1h37s8djl" path="res://assets/resources/dialogues/dialogue.gd" id="1_1n26g"]
+
+[resource]
+script = ExtResource("1_1n26g")
+category = "daily"
+lines = Array[String](["I've been playing the bass lately.", "It's cool. I like the grounded sound.", "Didn't you use to be in a band?"])
+metadata/_custom_type_script = "uid://8nm1h37s8djl"

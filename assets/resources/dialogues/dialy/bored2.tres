@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://b3vq2wml0wivd"]
+
+[ext_resource type="Script" uid="uid://8nm1h37s8djl" path="res://assets/resources/dialogues/dialogue.gd" id="1_ehkem"]
+
+[resource]
+script = ExtResource("1_ehkem")
+category = "daily"
+lines = Array[String](["So? What's up, Machine Guy?"])
+metadata/_custom_type_script = "uid://8nm1h37s8djl"

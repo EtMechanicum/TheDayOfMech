@@ -79,12 +79,14 @@ func _on_talk_pressed() -> void:
 	var dialogue_screen = dialogue_box.instantiate()
 	var dialogue_prob = randi_range(1, 10)
 	var dialogue
-	if dialogue_prob <= 7 :
-		dialogue = dialogue_container[1].dialogues.pick_random()
-	elif dialogue_prob > 7 && dialogue_prob < 10:
-		return
-	elif dialogue_prob == 10:
-		return
+	#Commented implementation makes use of categories in dialogues
+	#It is not used for now. Maybe in the future
+	#if dialogue_prob <= 7 :
+	dialogue = dialogue_container[1].dialogues.pick_random()
+	#elif dialogue_prob > 7 && dialogue_prob < 10:
+	#	return
+	#elif dialogue_prob == 10:
+		#return
 	#At this point, we have already chosen the dialogue to show
 	#var dialogue_window = dialogue_box.instantiate()
 	var line_label = dialogue_screen.get_node("MarginContainer/Panel/MarginContainer/VBoxContainer/Label")
