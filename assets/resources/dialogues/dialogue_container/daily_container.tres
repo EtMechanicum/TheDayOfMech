@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueContainer" format=3 uid="uid://coqx7g85124tj"]
+
+[ext_resource type="Script" uid="uid://8nm1h37s8djl" path="res://assets/resources/dialogues/dialogue.gd" id="1_7tlie"]
+[ext_resource type="Resource" uid="uid://cybbeuaox5qsr" path="res://assets/resources/dialogues/dialy/alright.tres" id="2_hsmen"]
+[ext_resource type="Resource" uid="uid://cl8e1vqgridk8" path="res://assets/resources/dialogues/dialy/hope_ya_good.tres" id="3_7q7d1"]
+[ext_resource type="Script" uid="uid://c70ii38clru4w" path="res://dialogue_container.gd" id="3_eab1f"]
+[ext_resource type="Resource" uid="uid://c036kjnlt5d2q" path="res://assets/resources/dialogues/dialy/ants.tres" id="4_1s52s"]
+
+[resource]
+script = ExtResource("3_eab1f")
+category = "daily"
+dialogues = Array[ExtResource("1_7tlie")]([ExtResource("2_hsmen"), ExtResource("3_7q7d1"), ExtResource("4_1s52s")])
+metadata/_custom_type_script = "uid://c70ii38clru4w"

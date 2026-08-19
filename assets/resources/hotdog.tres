@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://dwnsrfytoxyyj"]
+
+[ext_resource type="Script" uid="uid://diid208rf1hi1" path="res://item_resource.gd" id="1_65632"]
+[ext_resource type="Texture2D" uid="uid://b8a47735ljidc" path="res://assets/sprites/hotdog.png" id="2_im7u0"]
+
+[resource]
+script = ExtResource("1_65632")
+name = "hotdog"
+sprite = ExtResource("2_im7u0")
+category = "food"
+machine_price = 25.0
+base_shop_price = 20.0
+metadata/_custom_type_script = "uid://diid208rf1hi1"

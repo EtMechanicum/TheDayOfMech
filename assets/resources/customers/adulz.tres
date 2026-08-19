@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CustomerResource" format=3 uid="uid://c8cgis7rbf4qa"]
+
+[ext_resource type="Script" uid="uid://c4brd1iq0525m" path="res://scenes/customer.gd" id="1_wf06s"]
+[ext_resource type="Texture2D" uid="uid://y3c0vtwgx68a" path="res://assets/sprites/adult1.png" id="2_nn8hk"]
+
+[resource]
+script = ExtResource("1_wf06s")
+name = "adulz"
+budget = 30
+favorites = "food"
+spawn_days = Array[String](["sunny", "hot", "cold"])
+sprite = ExtResource("2_nn8hk")
+metadata/_custom_type_script = "uid://c4brd1iq0525m"

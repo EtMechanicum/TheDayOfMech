@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://dlymacfaokibk"]
+
+[ext_resource type="Script" uid="uid://diid208rf1hi1" path="res://item_resource.gd" id="1_sjo1j"]
+[ext_resource type="Texture2D" uid="uid://vp8evilsc8tl" path="res://assets/sprites/ice.png" id="2_t5veb"]
+
+[resource]
+script = ExtResource("1_sjo1j")
+name = "ice"
+sprite = ExtResource("2_t5veb")
+base_shop_price = 5
+metadata/_custom_type_script = "uid://diid208rf1hi1"

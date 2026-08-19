@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://b4gdpf8jpmuh6"]
+
+[ext_resource type="Script" uid="uid://diid208rf1hi1" path="res://item_resource.gd" id="1_xbit2"]
+[ext_resource type="Texture2D" uid="uid://c8xgavbkbjlk8" path="res://assets/sprites/items.png" id="2_xbit2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xwkd"]
+atlas = ExtResource("2_xbit2")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_xbit2")
+name = "cola"
+sprite = SubResource("AtlasTexture_1xwkd")
+category = "soda"
+machine_price = 15
+base_shop_price = 10
+metadata/_custom_type_script = "uid://diid208rf1hi1"

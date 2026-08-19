@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://s4sab75f4x06"]
+
+[ext_resource type="Script" uid="uid://bjgxe64kba3r8" path="res://scenes/slot.gd" id="1_ajxo5"]
+[ext_resource type="Texture2D" uid="uid://d1w72mubai5eq" path="res://assets/sprites/cola.png" id="1_dmg6v"]
+
+[node name="DragDropWorld" type="Node2D" unique_id=1191003522]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=641114218]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=579189444]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.697
+anchor_right = 0.5
+anchor_bottom = 0.697
+offset_left = -404.0
+offset_top = -150.20007
+offset_right = 396.0
+offset_bottom = 149.79993
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel" unique_id=344537934]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="Slot" type="Panel" parent="CanvasLayer/Panel/HBoxContainer" unique_id=11570484]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+script = ExtResource("1_ajxo5")
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Panel/HBoxContainer/Slot" unique_id=385925459]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.000004
+offset_top = 30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6993755, 0.7121711)
+texture = ExtResource("1_dmg6v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot2" type="Panel" parent="CanvasLayer/Panel/HBoxContainer" unique_id=1203160256]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+script = ExtResource("1_ajxo5")
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Panel/HBoxContainer/Slot2" unique_id=1034577149]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.000004
+offset_top = 30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6993755, 0.7121711)
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot3" type="Panel" parent="CanvasLayer/Panel/HBoxContainer" unique_id=149641162]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+script = ExtResource("1_ajxo5")
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Panel/HBoxContainer/Slot3" unique_id=1641882478]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.000004
+offset_top = 30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6993755, 0.7121711)
+expand_mode = 1
+stretch_mode = 5

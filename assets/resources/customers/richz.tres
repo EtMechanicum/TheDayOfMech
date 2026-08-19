@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CustomerResource" format=3 uid="uid://hnt2y0rarmxd"]
+
+[ext_resource type="Script" uid="uid://c4brd1iq0525m" path="res://scenes/customer.gd" id="1_1v8k6"]
+[ext_resource type="Texture2D" uid="uid://bn1kwu0e7cv3n" path="res://assets/sprites/rich1.png" id="2_p8hm8"]
+
+[resource]
+script = ExtResource("1_1v8k6")
+name = "richz"
+budget = 31
+favorites = "soda"
+spawn_days = Array[String](["sunny"])
+sprite = ExtResource("2_p8hm8")
+metadata/_custom_type_script = "uid://c4brd1iq0525m"

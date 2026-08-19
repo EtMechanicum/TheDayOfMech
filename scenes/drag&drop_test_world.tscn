@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://xf05ttvxw5hc"]
+
+[ext_resource type="Texture2D" uid="uid://d1w72mubai5eq" path="res://assets/sprites/cola.png" id="1_bnmsa"]
+[ext_resource type="PackedScene" uid="uid://cvgphxnukh710" path="res://scenes/prototypes/slot.tscn" id="1_qpskg"]
+[ext_resource type="Texture2D" uid="uid://b8a47735ljidc" path="res://assets/sprites/hotdog.png" id="3_e8r4p"]
+
+[node name="Drag&DropTestWorld" type="Node" unique_id=1196194744]
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1344288078]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+columns = 3
+
+[node name="Slot" parent="GridContainer" unique_id=1125985688 instance=ExtResource("1_qpskg")]
+layout_mode = 2
+
+[node name="Slot2" parent="GridContainer" unique_id=1471658629 instance=ExtResource("1_qpskg")]
+layout_mode = 2
+
+[node name="Slot3" parent="GridContainer" unique_id=871026090 instance=ExtResource("1_qpskg")]
+layout_mode = 2
+
+[node name="Slot4" parent="GridContainer" unique_id=1897056896 instance=ExtResource("1_qpskg")]
+layout_mode = 2
+
+[node name="Slot5" parent="GridContainer" unique_id=498205201 instance=ExtResource("1_qpskg")]
+layout_mode = 2
+
+[node name="Slot6" parent="GridContainer" unique_id=503070120 instance=ExtResource("1_qpskg")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=796834255]
+custom_minimum_size = Vector2(800, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -125.0
+offset_right = 400.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Slot" parent="HBoxContainer" unique_id=737372245 instance=ExtResource("1_qpskg")]
+layout_mode = 2
+texture = ExtResource("1_bnmsa")
+
+[node name="Slot2" parent="HBoxContainer" unique_id=1395292936 instance=ExtResource("1_qpskg")]
+layout_mode = 2
+texture = ExtResource("3_e8r4p")

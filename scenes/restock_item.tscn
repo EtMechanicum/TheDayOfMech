@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b50xkd22ngeh4"]
+
+[ext_resource type="Script" uid="uid://crmnw3ldr3xev" path="res://addons/drag_and_drop/scripts/draggable.gd" id="1_358i1"]
+[ext_resource type="Script" uid="uid://djdmnemxrx7bg" path="res://addons/drag_and_drop/resources/draggable_types/draggable_type.gd" id="2_2v8ct"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bppwi"]
+
+[sub_resource type="Resource" id="Resource_358i1"]
+script = ExtResource("2_2v8ct")
+
+[node name="Area2D" type="Area2D" unique_id=2057142909]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1030834126]
+shape = SubResource("RectangleShape2D_bppwi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1568658100]
+
+[node name="Draggable" type="Node" parent="." unique_id=867825131]
+script = ExtResource("1_358i1")
+type = SubResource("Resource_358i1")
+metadata/_custom_type_script = "uid://crmnw3ldr3xev"

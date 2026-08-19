@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cm5bmhk2yky1"]
+
+[ext_resource type="Script" uid="uid://diid208rf1hi1" path="res://item_resource.gd" id="1_ypu34"]
+[ext_resource type="Texture2D" uid="uid://c5prag6qlh0bt" path="res://assets/sprites/potatoes.png" id="2_2u4mp"]
+
+[resource]
+script = ExtResource("1_ypu34")
+name = "chips"
+sprite = ExtResource("2_2u4mp")
+category = "food"
+machine_price = 15
+base_shop_price = 10
+metadata/_custom_type_script = "uid://diid208rf1hi1"

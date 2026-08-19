@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cmm0bray04p6s"]
+
+[ext_resource type="Texture2D" uid="uid://bt84tgjc2vne2" path="res://assets/sprites/machine-options.png" id="1_83oeq"]
+[ext_resource type="Script" uid="uid://nj1hdjl1vob2" path="res://addons/drag_and_drop/scripts/drop_zone.gd" id="2_p7y0m"]
+[ext_resource type="Script" uid="uid://b5wqxyc42r5u" path="res://addons/drag_and_drop/resources/drop_behaviors/drop_behavior_reject.gd" id="3_ghwti"]
+[ext_resource type="Script" uid="uid://djdmnemxrx7bg" path="res://addons/drag_and_drop/resources/draggable_types/draggable_type.gd" id="4_ba8l1"]
+[ext_resource type="Texture2D" uid="uid://d1w72mubai5eq" path="res://assets/sprites/cola.png" id="5_wwx7t"]
+[ext_resource type="Script" uid="uid://crmnw3ldr3xev" path="res://addons/drag_and_drop/scripts/draggable.gd" id="6_2qyp0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojv2g"]
+
+[sub_resource type="Resource" id="Resource_yif0c"]
+script = ExtResource("4_ba8l1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vyrxl"]
+size = Vector2(429.5, 562)
+
+[sub_resource type="Resource" id="Resource_sdxgu"]
+script = ExtResource("3_ghwti")
+
+[sub_resource type="Resource" id="Resource_5o2hm"]
+script = ExtResource("4_ba8l1")
+
+[node name="Node2D" type="Node2D" unique_id=1742637854]
+
+[node name="Item" type="Control" parent="." unique_id=1974552054]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 187.0
+offset_top = 1069.0
+offset_right = 187.0
+offset_bottom = 1069.0
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="Item" unique_id=3319850]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item/Area2D" unique_id=635720060]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_ojv2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Item/Area2D" unique_id=1836114761]
+texture = ExtResource("5_wwx7t")
+
+[node name="Draggable" type="Node" parent="Item/Area2D" unique_id=120421628]
+script = ExtResource("6_2qyp0")
+type = SubResource("Resource_yif0c")
+metadata/_custom_type_script = "uid://crmnw3ldr3xev"
+
+[node name="Control" type="Control" parent="." unique_id=2096257558]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Area2D" type="Area2D" parent="Control" unique_id=46859492]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Area2D" unique_id=1103056500]
+position = Vector2(428.25, 621)
+shape = SubResource("RectangleShape2D_vyrxl")
+
+[node name="DropZone" type="Node2D" parent="Control/Area2D" unique_id=1443001928 node_paths=PackedStringArray("attach_spot")]
+script = ExtResource("2_p7y0m")
+attach_spot = NodePath("..")
+drop_behavior = SubResource("Resource_sdxgu")
+snap_style = 0
+accepted_draggable_types = Array[ExtResource("4_ba8l1")]([SubResource("Resource_5o2hm")])
+metadata/_custom_type_script = "uid://nj1hdjl1vob2"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Area2D" unique_id=905115537]
+position = Vector2(426.00003, 610)
+scale = Vector2(0.46055555, 0.3584375)
+texture = ExtResource("1_83oeq")

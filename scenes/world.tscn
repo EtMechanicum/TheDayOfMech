@@ -1,0 +1,963 @@
+[gd_scene format=3 uid="uid://btj2dsaxqf8bj"]
+
+[ext_resource type="Script" uid="uid://darjqxa3fm2by" path="res://scenes/world.gd" id="1_q5onr"]
+[ext_resource type="Texture2D" uid="uid://b1i3gbkii36dm" path="res://assets/sprites/bozza logo 2.png" id="2_q5onr"]
+[ext_resource type="Texture2D" uid="uid://csf4b4jv028lc" path="res://assets/sprites/buttons.png" id="3_jhx03"]
+[ext_resource type="Texture2D" uid="uid://cqmfppe38852e" path="res://assets/sprites/overview.png" id="3_o8fc1"]
+[ext_resource type="Texture2D" uid="uid://b7s1bc1886pbt" path="res://assets/sprites/store.png" id="4_e3hyu"]
+[ext_resource type="Script" uid="uid://jj3l61h6h4kc" path="res://scenes/store.gd" id="4_i7141"]
+[ext_resource type="Script" uid="uid://dpq8d1tqiedlj" path="res://scenes/hud.gd" id="6_qfnet"]
+[ext_resource type="Texture2D" uid="uid://d0xfmm4yibnye" path="res://assets/sprites/menus.png" id="7_e3hyu"]
+[ext_resource type="PackedScene" uid="uid://7q3wh0xemx3f" path="res://scenes/machine_options.tscn" id="7_i7141"]
+[ext_resource type="Script" uid="uid://d0jinsyixuqca" path="res://scenes/machine_status.gd" id="8_e3hyu"]
+[ext_resource type="Texture2D" uid="uid://dla5uorpl86kq" path="res://assets/sprites/cooling.png" id="8_q5onr"]
+[ext_resource type="FontFile" uid="uid://dy5vfjimtgsv8" path="res://assets/fonts/ChiKareGo2.ttf" id="10_dss4m"]
+[ext_resource type="PackedScene" uid="uid://cvgphxnukh710" path="res://scenes/prototypes/slot.tscn" id="10_e3hyu"]
+[ext_resource type="Texture2D" uid="uid://dc1ce2uwq1h11" path="res://assets/sprites/room.png" id="13_jhx03"]
+[ext_resource type="Script" uid="uid://cwb8arkqnboh8" path="res://scenes/home.gd" id="13_o8fc1"]
+[ext_resource type="Script" uid="uid://cvfk7jja4bd34" path="res://scenes/price_manager.gd" id="15_xo05s"]
+[ext_resource type="Texture2D" uid="uid://dw5i85y8gn4s0" path="res://assets/sprites/wastelands.png" id="17_7t5mc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q5onr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhx03"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o8fc1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm21f"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(15.782335, 96.20274, 48.468307, 16.115707)
+
+[sub_resource type="GDScript" id="GDScript_4mrxx"]
+script/source = "extends Control
+
+const report = preload(\"res://scenes/text_box.tscn\")
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	GameManager.spawn_visible_customer.connect(_on_spawn_customer_signal)
+	GameManager.despawn_customer.connect(_on_despawn_customer_signal)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_spawn_customer_signal(customer: CustomerResource) -> void:
+	$\"TextureRect/Customer/CustomerSprite\".texture = customer.sprite
+
+func _on_despawn_customer_signal() -> void:
+	$\"TextureRect/Customer/CustomerSprite\".texture = null
+
+func _on_ok_button_pressed():
+	var report = get_node(\"TextBox\")
+	report.queue_free()
+
+func _on_reveneus_pressed() -> void:
+	var report = report.instantiate()
+	var container = report.get_node(\"MarginContainer/Panel/MarginContainer/VBoxContainer\")
+	var revenue_text = \"Total revenue since last time: %d\"%[GameManager.revenue]
+	var revenue_label = Label.new()
+	revenue_label.text = revenue_text
+	container.add_child(revenue_label)
+	var went_away_text = \"Customers went away: %d\"%[GameManager.went_away_count]
+	var went_away_label = Label.new()
+	went_away_label.text = went_away_text
+	container.add_child(went_away_label)
+	#OK button
+	var ok_button = Button.new()
+	ok_button.pressed.connect(_on_ok_button_pressed)
+	ok_button.text = \"OK\"
+	ok_button.add_theme_font_size_override(\"font_size\", 48)
+	container.add_child(ok_button)
+	add_child(report)
+	GameManager.player_money += GameManager.revenue
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo05s"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dss4m"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lf6f"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iits"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo54l"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lakw3"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(0, 0, 150, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t5mc"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(64, 52, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7kh3"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3hyu"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5onr"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8fc1"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhx03"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(0, 64, 36, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpybi"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(-0.18253183, -0.2993126, 84.367744, 32.386654)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctatt"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(64.03104, 47.848244, 16.041039, 16.041039)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t5mc"]
+bg_color = Color(1, 0.6666667, 0.36862746, 1)
+
+[node name="World" type="Node" unique_id=447409703]
+script = ExtResource("1_q5onr")
+
+[node name="MainMenu" type="Control" parent="." unique_id=133412698]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu" unique_id=1695077118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_q5onr")
+
+[node name="PlayButton" type="Button" parent="MainMenu/TextureRect" unique_id=1826440286]
+custom_minimum_size = Vector2(536, 192)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q5onr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jhx03")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o8fc1")
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/TextureRect/PlayButton" unique_id=1105375868]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_pm21f")
+expand_mode = 1
+
+[node name="Load" type="Button" parent="MainMenu/TextureRect" unique_id=1878632678]
+custom_minimum_size = Vector2(520, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = 228.0
+offset_right = 17.0
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOAD"
+
+[node name="MachineOverview" type="Control" parent="." unique_id=328114699]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+mouse_filter = 2
+script = SubResource("GDScript_4mrxx")
+
+[node name="TextureRect" type="TextureRect" parent="MachineOverview" unique_id=513923098]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_o8fc1")
+
+[node name="MarginContainer" type="MarginContainer" parent="MachineOverview/TextureRect" unique_id=152368665]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MachineOverview/TextureRect/MarginContainer" unique_id=1125315459]
+layout_mode = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="To Store" type="Button" parent="MachineOverview/TextureRect/MarginContainer/HBoxContainer" unique_id=1204139477]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="MachineOverview/TextureRect/MarginContainer/HBoxContainer/To Store" unique_id=603757634]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_xo05s")
+
+[node name="ToRestock" type="Button" parent="MachineOverview/TextureRect/MarginContainer/HBoxContainer" unique_id=230961634]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToRestock" unique_id=526818580]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_dss4m")
+expand_mode = 1
+
+[node name="Reveneus" type="Button" parent="MachineOverview/TextureRect/MarginContainer/HBoxContainer" unique_id=235764281]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MachineOverview/TextureRect/MarginContainer/HBoxContainer/Reveneus" unique_id=812077270]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_2lf6f")
+expand_mode = 1
+
+[node name="ToMachineStatus" type="Button" parent="MachineOverview/TextureRect/MarginContainer/HBoxContainer" unique_id=1598331167]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToMachineStatus" unique_id=869304402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_7iits")
+expand_mode = 1
+
+[node name="ToHome" type="Button" parent="MachineOverview/TextureRect/MarginContainer/HBoxContainer" unique_id=616296410]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToHome" unique_id=391612978]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_oo54l")
+expand_mode = 1
+
+[node name="Customer" type="Control" parent="MachineOverview/TextureRect" unique_id=1295449115]
+custom_minimum_size = Vector2(64, 96)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -419.0
+offset_top = -280.0
+offset_right = -355.0
+offset_bottom = -184.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(9, 9)
+
+[node name="CustomerSprite" type="TextureRect" parent="MachineOverview/TextureRect/Customer" unique_id=146166442]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="MachineOptions" parent="." unique_id=1349014209 instance=ExtResource("7_i7141")]
+visible = false
+
+[node name="Store" type="Control" parent="." unique_id=1591577076]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_i7141")
+
+[node name="TextureRect" type="TextureRect" parent="Store" unique_id=1683381149]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_e3hyu")
+
+[node name="ShopMenu" type="Control" parent="Store/TextureRect" unique_id=424097577]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 120.0
+offset_bottom = 376.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuTexture" type="TextureRect" parent="Store/TextureRect/ShopMenu" unique_id=1748300357]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_lakw3")
+
+[node name="OkButton" type="Button" parent="Store/TextureRect/ShopMenu/MenuTexture" unique_id=205043715]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.99997
+offset_top = -64.0
+offset_right = 40.00003
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.0139419, 0.57226014)
+
+[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/ShopMenu/MenuTexture/OkButton" unique_id=1686999785]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_7t5mc")
+
+[node name="MarginContainer" type="MarginContainer" parent="Store/TextureRect/ShopMenu/MenuTexture" unique_id=942332311]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.66700006
+offset_top = 29.0
+offset_bottom = 18.247986
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="GridContainer" type="ScrollContainer" parent="Store/TextureRect/ShopMenu/MenuTexture/MarginContainer" unique_id=52651781]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Store/TextureRect/ShopMenu/MenuTexture/MarginContainer/GridContainer" unique_id=2115433175]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Store/TextureRect" unique_id=265511257]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Store/TextureRect/MarginContainer" unique_id=693424858]
+layout_mode = 2
+theme_override_constants/separation = 96
+alignment = 1
+
+[node name="ToWastelands" type="Button" parent="Store/TextureRect/MarginContainer/HBoxContainer" unique_id=1233491685]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/MarginContainer/HBoxContainer/ToWastelands" unique_id=165967037]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_w7kh3")
+
+[node name="Buy" type="Button" parent="Store/TextureRect/MarginContainer/HBoxContainer" unique_id=1781444614]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/MarginContainer/HBoxContainer/Buy" unique_id=1215347199]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_e3hyu")
+
+[node name="Talk" type="Button" parent="Store/TextureRect/MarginContainer/HBoxContainer" unique_id=1336929780]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/MarginContainer/HBoxContainer/Talk" unique_id=79109912]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_q5onr")
+
+[node name="ToMachine" type="Button" parent="Store/TextureRect/MarginContainer/HBoxContainer" unique_id=865427536]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/MarginContainer/HBoxContainer/ToMachine" unique_id=835043008]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_o8fc1")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=304778213]
+visible = false
+script = ExtResource("6_qfnet")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=1823540443]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.99997
+offset_top = 1.9999994
+offset_right = -188.99997
+offset_bottom = 14.999999
+grow_horizontal = 2
+scale = Vector2(10, 10)
+pivot_offset = Vector2(19.599998, -0.49999997)
+size_flags_horizontal = 4
+
+[node name="MoneyTexture" type="TextureRect" parent="HUD/MarginContainer" unique_id=1334854895]
+layout_mode = 2
+texture = SubResource("AtlasTexture_jhx03")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlayerMoney" type="Label" parent="HUD/MarginContainer/MoneyTexture" unique_id=1760698637]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.6666718
+offset_top = -6.833332
+offset_right = 153.33333
+offset_bottom = 60.16667
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15546784, 0.1834618)
+theme_override_colors/font_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+theme_override_font_sizes/font_size = 28
+text = "0 coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WeatherIcon" type="MarginContainer" parent="HUD" unique_id=250267102]
+offset_left = 507.0
+offset_top = 19.000002
+offset_right = 547.0
+offset_bottom = 59.0
+scale = Vector2(2.6683805, 2.563246)
+
+[node name="WeatherTexture" type="TextureRect" parent="HUD/WeatherIcon" unique_id=205858916]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 1
+
+[node name="DayCount" type="Label" parent="HUD" unique_id=1150742912]
+offset_left = 754.0
+offset_top = 44.0
+offset_right = 856.0
+offset_bottom = 89.0
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 52
+text = "DAY 1"
+
+[node name="Home" type="Control" parent="." unique_id=2058543541]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_o8fc1")
+
+[node name="TextureRect" type="TextureRect" parent="Home" unique_id=640842020]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_jhx03")
+
+[node name="Inventory" type="Control" parent="Home/TextureRect" unique_id=604989686]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 120.0
+offset_bottom = 376.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuTexture" type="TextureRect" parent="Home/TextureRect/Inventory" unique_id=875323014]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_lakw3")
+
+[node name="CloseInventoryButton" type="Button" parent="Home/TextureRect/Inventory/MenuTexture" unique_id=1962088439]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.99997
+offset_top = -64.0
+offset_right = 40.00003
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.0139419, 0.57226014)
+
+[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/Inventory/MenuTexture/CloseInventoryButton" unique_id=518472475]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_7t5mc")
+
+[node name="MarginContainer" type="MarginContainer" parent="Home/TextureRect/Inventory/MenuTexture" unique_id=2027863454]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.66700006
+offset_top = 29.0
+offset_bottom = 18.247986
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="GridContainer" type="ScrollContainer" parent="Home/TextureRect/Inventory/MenuTexture/MarginContainer" unique_id=999018285]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Home/TextureRect/Inventory/MenuTexture/MarginContainer/GridContainer" unique_id=1001269783]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PriceManager" type="Control" parent="Home/TextureRect" unique_id=1868085888]
+visible = false
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_xo05s")
+
+[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/PriceManager" unique_id=1336022264]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_kpybi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Home/TextureRect/PriceManager/TextureRect" unique_id=1307389329]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Add1" type="Button" parent="Home/TextureRect/PriceManager/TextureRect/HBoxContainer" unique_id=1322571342]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+1"
+
+[node name="Add5" type="Button" parent="Home/TextureRect/PriceManager/TextureRect/HBoxContainer" unique_id=1960138278]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+5"
+
+[node name="CurrentPrice" type="Label" parent="Home/TextureRect/PriceManager/TextureRect/HBoxContainer" unique_id=1597322898]
+custom_minimum_size = Vector2(256, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Current Price"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sub5" type="Button" parent="Home/TextureRect/PriceManager/TextureRect/HBoxContainer" unique_id=1555988175]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "-5"
+
+[node name="Sub1" type="Button" parent="Home/TextureRect/PriceManager/TextureRect/HBoxContainer" unique_id=688533939]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "-1"
+
+[node name="OkButton" type="Button" parent="Home/TextureRect/PriceManager/TextureRect" unique_id=1798744380]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -80.0
+offset_right = 32.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/PriceManager/TextureRect/OkButton" unique_id=1465881416]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ctatt")
+
+[node name="MarginContainer" type="MarginContainer" parent="Home/TextureRect" unique_id=1243059116]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Home/TextureRect/MarginContainer" unique_id=2013346347]
+layout_mode = 2
+theme_override_constants/separation = 96
+alignment = 1
+
+[node name="ToOverview" type="Button" parent="Home/TextureRect/MarginContainer/HBoxContainer" unique_id=2073567841]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/MarginContainer/HBoxContainer/ToOverview" unique_id=28038959]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_w7kh3")
+
+[node name="InventoryButton" type="Button" parent="Home/TextureRect/MarginContainer/HBoxContainer" unique_id=861951589]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Inven"
+
+[node name="Save" type="Button" parent="Home/TextureRect/MarginContainer/HBoxContainer" unique_id=300669256]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Save"
+
+[node name="ToWastelands" type="Button" parent="Home/TextureRect/MarginContainer/HBoxContainer" unique_id=650270006]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/MarginContainer/HBoxContainer/ToWastelands" unique_id=2139420322]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_o8fc1")
+
+[node name="MachineStatus" type="Control" parent="." unique_id=794672676]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_e3hyu")
+
+[node name="TextureRect" type="TextureRect" parent="MachineStatus" unique_id=513165878]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_q5onr")
+expand_mode = 1
+
+[node name="Buttons" type="MarginContainer" parent="MachineStatus/TextureRect" unique_id=1294178412]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MachineStatus/TextureRect/Buttons" unique_id=2037474594]
+layout_mode = 2
+
+[node name="ToOverview" type="Button" parent="MachineStatus/TextureRect/Buttons/HBoxContainer" unique_id=1932407325]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+text = "Back To 
+Overview"
+
+[node name="IceMenu" type="MarginContainer" parent="MachineStatus/TextureRect" unique_id=1100617175]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 277.0
+offset_bottom = 533.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MachineStatus/TextureRect/IceMenu" unique_id=61936651]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7t5mc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MachineStatus/TextureRect/IceMenu/Panel" unique_id=1188492509]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="IceContainer" type="MarginContainer" parent="MachineStatus/TextureRect" unique_id=439311995]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 523.0
+offset_right = 300.0
+offset_bottom = 651.0
+
+[node name="DeviceOpening" parent="MachineStatus/TextureRect/IceContainer" unique_id=2060790168 instance=ExtResource("10_e3hyu")]
+layout_mode = 2
+
+[node name="Wastelands" type="Control" parent="." unique_id=1913597111]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Wastelands" unique_id=1668492026]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_7t5mc")
+
+[node name="MarginContainer" type="MarginContainer" parent="Wastelands/TextureRect" unique_id=1309189269]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Wastelands/TextureRect/MarginContainer" unique_id=568659868]
+layout_mode = 2
+theme_override_constants/separation = 96
+alignment = 1
+
+[node name="ToHome" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=1933378610]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer/ToHome" unique_id=1992145015]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_w7kh3")
+
+[node name="Buy" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=1966857937]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer/Buy" unique_id=1982256706]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_e3hyu")
+
+[node name="Talk" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=424854568]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer/Talk" unique_id=1603390039]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_q5onr")
+
+[node name="ToStore" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=1081697375]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer/ToStore" unique_id=1021154455]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_o8fc1")
+
+[connection signal="pressed" from="MainMenu/TextureRect/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/TextureRect/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/To Store" to="." method="_to_store_from_machine"]
+[connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToRestock" to="." method="_to_machine_options_button"]
+[connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToRestock" to="MachineOptions" method="_on_restock_pressed"]
+[connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/Reveneus" to="MachineOverview" method="_on_reveneus_pressed"]
+[connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToMachineStatus" to="." method="_to_machine_status_pressed"]
+[connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToHome" to="." method="_on_to_home_pressed"]
+[connection signal="pressed" from="Store/TextureRect/ShopMenu/MenuTexture/OkButton" to="Store" method="_on_ok_button_pressed"]
+[connection signal="pressed" from="Store/TextureRect/MarginContainer/HBoxContainer/ToWastelands" to="." method="_on_to_wastelands_button"]
+[connection signal="pressed" from="Store/TextureRect/MarginContainer/HBoxContainer/Buy" to="Store" method="_on_buy_pressed"]
+[connection signal="pressed" from="Store/TextureRect/MarginContainer/HBoxContainer/Talk" to="Store" method="_on_talk_pressed"]
+[connection signal="pressed" from="Store/TextureRect/MarginContainer/HBoxContainer/ToMachine" to="." method="_to_vending_mechine"]
+[connection signal="pressed" from="Home/TextureRect/Inventory/MenuTexture/CloseInventoryButton" to="Home" method="_on_close_inventory_button_pressed"]
+[connection signal="pressed" from="Home/TextureRect/PriceManager/TextureRect/HBoxContainer/Add1" to="Home" method="_on_add_1_pressed"]
+[connection signal="pressed" from="Home/TextureRect/PriceManager/TextureRect/HBoxContainer/Add5" to="Home" method="_on_add_5_pressed"]
+[connection signal="pressed" from="Home/TextureRect/PriceManager/TextureRect/HBoxContainer/Sub5" to="Home" method="_on_sub_5_pressed"]
+[connection signal="pressed" from="Home/TextureRect/PriceManager/TextureRect/HBoxContainer/Sub1" to="Home" method="_on_sub_1_pressed"]
+[connection signal="pressed" from="Home/TextureRect/PriceManager/TextureRect/OkButton" to="Home" method="_on_price_manager_ok_button_pressed"]
+[connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/ToOverview" to="." method="_to_vending_mechine"]
+[connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/InventoryButton" to="Home" method="_on_inventory_pressed"]
+[connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/ToWastelands" to="." method="_on_to_wastelands_button"]
+[connection signal="pressed" from="MachineStatus/TextureRect/Buttons/HBoxContainer/ToOverview" to="." method="_back_to_machine_overview_button"]
+[connection signal="pressed" from="Wastelands/TextureRect/MarginContainer/HBoxContainer/ToHome" to="." method="_on_to_home_pressed"]
+[connection signal="pressed" from="Wastelands/TextureRect/MarginContainer/HBoxContainer/ToStore" to="." method="_to_store_from_machine"]
