@@ -138,8 +138,20 @@ region = Rect2(-0.18253183, -0.2993126, 84.367744, 32.386654)
 atlas = ExtResource("3_jhx03")
 region = Rect2(64.03104, 47.848244, 16.041039, 16.041039)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_munwf"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(0.08238888, 32.08239, 16.19376, 15.942043)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts3gi"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(32.133152, 31.934261, 15.939529, 15.939526)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t5mc"]
 bg_color = Color(1, 0.6666667, 0.36862746, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nbtd"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(64.03101, 31.87128, 16.345634, 16.85326)
 
 [node name="World" type="Node" unique_id=447409703]
 script = ExtResource("1_q5onr")
@@ -217,6 +229,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_xgqkh")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="MainMenu" unique_id=939308722]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 36
+text = "Edmech Labs - V 1.0"
 
 [node name="MachineOverview" type="Control" parent="." unique_id=328114699]
 visible = false
@@ -468,6 +495,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 4
 
 [node name="Buttons" type="MarginContainer" parent="Store/TextureRect" unique_id=265511257]
 layout_mode = 1
@@ -481,7 +509,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Store/TextureRect/Buttons" unique_id=693424858]
 layout_mode = 2
-theme_override_constants/separation = 96
+theme_override_constants/separation = 108
 alignment = 1
 
 [node name="ToWastelands" type="Button" parent="Store/TextureRect/Buttons/HBoxContainer" unique_id=1233491685]
@@ -786,7 +814,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Home/TextureRect/MarginContainer" unique_id=2013346347]
 layout_mode = 2
-theme_override_constants/separation = 96
+theme_override_constants/separation = 108
 alignment = 1
 
 [node name="ToOverview" type="Button" parent="Home/TextureRect/MarginContainer/HBoxContainer" unique_id=2073567841]
@@ -806,13 +834,29 @@ texture = SubResource("AtlasTexture_w7kh3")
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Inven"
+
+[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/MarginContainer/HBoxContainer/InventoryButton" unique_id=867580117]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_munwf")
 
 [node name="Save" type="Button" parent="Home/TextureRect/MarginContainer/HBoxContainer" unique_id=300669256]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Save"
+
+[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/MarginContainer/HBoxContainer/Save" unique_id=1302446612]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ts3gi")
 
 [node name="ToWastelands" type="Button" parent="Home/TextureRect/MarginContainer/HBoxContainer" unique_id=650270006]
 custom_minimum_size = Vector2(128, 128)
@@ -941,7 +985,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Wastelands/TextureRect/MarginContainer" unique_id=568659868]
 layout_mode = 2
-theme_override_constants/separation = 96
+theme_override_constants/separation = 220
 alignment = 1
 
 [node name="ToHome" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=1933378610]
@@ -957,31 +1001,18 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_w7kh3")
 
-[node name="Buy" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=1966857937]
+[node name="Event?" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=424854568]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer/Buy" unique_id=1982256706]
+[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer/Event?" unique_id=1603390039]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_e3hyu")
-
-[node name="Talk" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=424854568]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer/Talk" unique_id=1603390039]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_q5onr")
+texture = SubResource("AtlasTexture_0nbtd")
 
 [node name="ToStore" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=1081697375]
 custom_minimum_size = Vector2(128, 128)
