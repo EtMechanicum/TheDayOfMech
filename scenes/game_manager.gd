@@ -10,18 +10,22 @@ var player_money: float = 40:
 
 #Dictionary resource to quantity
 var player_inventory = {
-	preload("res://assets/resources/cola.tres") : 1,
-	#preload("res://assets/resources/hotdog.tres") : 0,
+	preload("res://assets/resources/cola.tres") : 0,
+	preload("res://assets/resources/hotdog.tres") : 0,
 	preload("res://assets/resources/ice.tres") : 0,
-	preload("res://assets/resources/chips.tres") : 0
+	preload("res://assets/resources/chips.tres") : 0,
+	preload("res://assets/resources/coffee.tres") : 0,
+	preload("res://assets/resources/giant-cookie.tres") : 0
 }
 
 ###VENDING MACHINE STUFF###
 
 var machine_inventory = {
 	preload("res://assets/resources/cola.tres") : 0,
-	#preload("res://assets/resources/hotdog.tres") : 0
-	preload("res://assets/resources/chips.tres") : 0
+	preload("res://assets/resources/hotdog.tres") : 0,
+	preload("res://assets/resources/chips.tres") : 0,
+	preload("res://assets/resources/coffee.tres") : 0,
+	preload("res://assets/resources/giant-cookie.tres") : 0
 }
 
 var inventory_container: HBoxContainer:

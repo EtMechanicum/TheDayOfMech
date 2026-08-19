@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dmcj0sega24y1" path="res://scenes/machine_options.gd" id="1_dsjah"]
 [ext_resource type="Texture2D" uid="uid://6ajvs32tw73n" path="res://assets/sprites/restock.png" id="2_ye2xb"]
 [ext_resource type="PackedScene" uid="uid://cvgphxnukh710" path="res://scenes/prototypes/slot.tscn" id="3_ye2xb"]
-[ext_resource type="Texture2D" uid="uid://bbcvf3gbawilt" path="res://assets/sprites/soda.png" id="4_hjcsc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjcsc"]
 bg_color = Color(1, 0.6666667, 0.36862746, 1)
@@ -49,65 +48,53 @@ theme_override_constants/h_separation = 28
 theme_override_constants/v_separation = 128
 columns = 4
 
-[node name="Slot" parent="TextureRect/RestockContainer/GridContainer" unique_id=1125985688 instance=ExtResource("3_ye2xb")]
+[node name="Slot1" parent="TextureRect/RestockContainer/GridContainer" unique_id=1125985688 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
 [node name="Slot2" parent="TextureRect/RestockContainer/GridContainer" unique_id=1003886885 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
-[node name="Slot3" parent="TextureRect/RestockContainer/GridContainer" unique_id=2063578117 instance=ExtResource("3_ye2xb")]
+[node name="Slot3" parent="TextureRect/RestockContainer/GridContainer" unique_id=1010272491 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
-[node name="Slot4" parent="TextureRect/RestockContainer/GridContainer" unique_id=838230659 instance=ExtResource("3_ye2xb")]
+[node name="Slot4" parent="TextureRect/RestockContainer/GridContainer" unique_id=931863279 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
-[node name="Slot5" parent="TextureRect/RestockContainer/GridContainer" unique_id=1484143482 instance=ExtResource("3_ye2xb")]
+[node name="Slot5" parent="TextureRect/RestockContainer/GridContainer" unique_id=346750450 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
-[node name="Slot6" parent="TextureRect/RestockContainer/GridContainer" unique_id=1691032508 instance=ExtResource("3_ye2xb")]
+[node name="Slot6" parent="TextureRect/RestockContainer/GridContainer" unique_id=1204799564 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
-[node name="Slot7" parent="TextureRect/RestockContainer/GridContainer" unique_id=589951770 instance=ExtResource("3_ye2xb")]
+[node name="Slot7" parent="TextureRect/RestockContainer/GridContainer" unique_id=419697762 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
-[node name="Slot8" parent="TextureRect/RestockContainer/GridContainer" unique_id=453763143 instance=ExtResource("3_ye2xb")]
+[node name="Slot8" parent="TextureRect/RestockContainer/GridContainer" unique_id=321915008 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
-[node name="Slot9" parent="TextureRect/RestockContainer/GridContainer" unique_id=1461399025 instance=ExtResource("3_ye2xb")]
+[node name="Slot9" parent="TextureRect/RestockContainer/GridContainer" unique_id=224938847 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
-[node name="Slot10" parent="TextureRect/RestockContainer/GridContainer" unique_id=389295745 instance=ExtResource("3_ye2xb")]
+[node name="Slot10" parent="TextureRect/RestockContainer/GridContainer" unique_id=713473935 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
-[node name="Slot11" parent="TextureRect/RestockContainer/GridContainer" unique_id=229217811 instance=ExtResource("3_ye2xb")]
+[node name="Slot11" parent="TextureRect/RestockContainer/GridContainer" unique_id=1855468496 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
-[node name="Slot12" parent="TextureRect/RestockContainer/GridContainer" unique_id=1010272491 instance=ExtResource("3_ye2xb")]
+[node name="Slot12" parent="TextureRect/RestockContainer/GridContainer" unique_id=1520297195 instance=ExtResource("3_ye2xb")]
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 2
-texture = ExtResource("4_hjcsc")
 
 [node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=362288342]
 layout_mode = 1

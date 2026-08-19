@@ -28,6 +28,10 @@
 atlas = ExtResource("3_jhx03")
 region = Rect2(15.782335, 96.20274, 48.468307, 16.115707)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgqkh"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(15.992376, 111.97449, 48.708572, 16.295685)
+
 [sub_resource type="GDScript" id="GDScript_4mrxx"]
 script/source = "extends Control
 
@@ -141,7 +145,6 @@ bg_color = Color(1, 0.6666667, 0.36862746, 1)
 script = ExtResource("1_q5onr")
 
 [node name="MainMenu" type="Control" parent="." unique_id=133412698]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,25 +161,37 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_q5onr")
 
-[node name="PlayButton" type="Button" parent="MainMenu/TextureRect" unique_id=1826440286]
-custom_minimum_size = Vector2(536, 192)
+[node name="MainMenuButtons" type="Control" parent="MainMenu/TextureRect" unique_id=1920351626]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -258.0
+offset_top = -67.0
+offset_right = 283.0
+offset_bottom = 482.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/TextureRect/MainMenuButtons" unique_id=1512550877]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="PlayButton" type="Button" parent="MainMenu/TextureRect/MainMenuButtons/VBoxContainer" unique_id=1826440286]
+custom_minimum_size = Vector2(536, 192)
+layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_q5onr")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_jhx03")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_o8fc1")
 
-[node name="TextureRect" type="TextureRect" parent="MainMenu/TextureRect/PlayButton" unique_id=1105375868]
+[node name="TextureRect" type="TextureRect" parent="MainMenu/TextureRect/MainMenuButtons/VBoxContainer/PlayButton" unique_id=1105375868]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,21 +201,22 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_pm21f")
 expand_mode = 1
 
-[node name="Load" type="Button" parent="MainMenu/TextureRect" unique_id=1878632678]
-custom_minimum_size = Vector2(520, 180)
+[node name="LoadButton" type="Button" parent="MainMenu/TextureRect/MainMenuButtons/VBoxContainer" unique_id=782327028]
+custom_minimum_size = Vector2(536, 192)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q5onr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jhx03")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o8fc1")
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/TextureRect/MainMenuButtons/VBoxContainer/LoadButton" unique_id=1154847191]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 9.0
-offset_top = 228.0
-offset_right = 17.0
-offset_bottom = 236.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "LOAD"
+texture = SubResource("AtlasTexture_xgqkh")
+expand_mode = 1
 
 [node name="MachineOverview" type="Control" parent="." unique_id=328114699]
 visible = false
@@ -387,6 +403,7 @@ grow_vertical = 2
 texture = ExtResource("4_e3hyu")
 
 [node name="ShopMenu" type="Control" parent="Store/TextureRect" unique_id=424097577]
+visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -396,9 +413,9 @@ offset_top = 120.0
 offset_bottom = 376.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1.0872091)
 
 [node name="MenuTexture" type="TextureRect" parent="Store/TextureRect/ShopMenu" unique_id=1748300357]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -452,7 +469,7 @@ custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Store/TextureRect" unique_id=265511257]
+[node name="Buttons" type="MarginContainer" parent="Store/TextureRect" unique_id=265511257]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -462,16 +479,16 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_bottom = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Store/TextureRect/MarginContainer" unique_id=693424858]
+[node name="HBoxContainer" type="HBoxContainer" parent="Store/TextureRect/Buttons" unique_id=693424858]
 layout_mode = 2
 theme_override_constants/separation = 96
 alignment = 1
 
-[node name="ToWastelands" type="Button" parent="Store/TextureRect/MarginContainer/HBoxContainer" unique_id=1233491685]
+[node name="ToWastelands" type="Button" parent="Store/TextureRect/Buttons/HBoxContainer" unique_id=1233491685]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/MarginContainer/HBoxContainer/ToWastelands" unique_id=165967037]
+[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/Buttons/HBoxContainer/ToWastelands" unique_id=165967037]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -480,11 +497,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_w7kh3")
 
-[node name="Buy" type="Button" parent="Store/TextureRect/MarginContainer/HBoxContainer" unique_id=1781444614]
+[node name="Buy" type="Button" parent="Store/TextureRect/Buttons/HBoxContainer" unique_id=1781444614]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/MarginContainer/HBoxContainer/Buy" unique_id=1215347199]
+[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/Buttons/HBoxContainer/Buy" unique_id=1215347199]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -493,11 +510,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_e3hyu")
 
-[node name="Talk" type="Button" parent="Store/TextureRect/MarginContainer/HBoxContainer" unique_id=1336929780]
+[node name="Talk" type="Button" parent="Store/TextureRect/Buttons/HBoxContainer" unique_id=1336929780]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/MarginContainer/HBoxContainer/Talk" unique_id=79109912]
+[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/Buttons/HBoxContainer/Talk" unique_id=79109912]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -506,11 +523,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_q5onr")
 
-[node name="ToMachine" type="Button" parent="Store/TextureRect/MarginContainer/HBoxContainer" unique_id=865427536]
+[node name="ToMachine" type="Button" parent="Store/TextureRect/Buttons/HBoxContainer" unique_id=865427536]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/MarginContainer/HBoxContainer/ToMachine" unique_id=835043008]
+[node name="TextureRect" type="TextureRect" parent="Store/TextureRect/Buttons/HBoxContainer/ToMachine" unique_id=835043008]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -811,6 +828,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_o8fc1")
 
 [node name="MachineStatus" type="Control" parent="." unique_id=794672676]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -978,8 +996,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_o8fc1")
 
-[connection signal="pressed" from="MainMenu/TextureRect/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainMenu/TextureRect/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="MainMenu/TextureRect/MainMenuButtons/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/TextureRect/MainMenuButtons/VBoxContainer/LoadButton" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/To Store" to="." method="_to_store_from_machine"]
 [connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToRestock" to="." method="_to_machine_options_button"]
 [connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToRestock" to="MachineOptions" method="_on_restock_pressed"]
@@ -988,10 +1006,10 @@ texture = SubResource("AtlasTexture_o8fc1")
 [connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToHome" to="." method="_on_to_home_pressed"]
 [connection signal="pressed" from="MachineOptions/MarginContainer/HBoxContainer/ToOverview" to="." method="_to_vending_mechine"]
 [connection signal="pressed" from="Store/TextureRect/ShopMenu/MenuTexture/OkButton" to="Store" method="_on_ok_button_pressed"]
-[connection signal="pressed" from="Store/TextureRect/MarginContainer/HBoxContainer/ToWastelands" to="." method="_on_to_wastelands_button"]
-[connection signal="pressed" from="Store/TextureRect/MarginContainer/HBoxContainer/Buy" to="Store" method="_on_buy_pressed"]
-[connection signal="pressed" from="Store/TextureRect/MarginContainer/HBoxContainer/Talk" to="Store" method="_on_talk_pressed"]
-[connection signal="pressed" from="Store/TextureRect/MarginContainer/HBoxContainer/ToMachine" to="." method="_to_vending_mechine"]
+[connection signal="pressed" from="Store/TextureRect/Buttons/HBoxContainer/ToWastelands" to="." method="_on_to_wastelands_button"]
+[connection signal="pressed" from="Store/TextureRect/Buttons/HBoxContainer/Buy" to="Store" method="_on_buy_pressed"]
+[connection signal="pressed" from="Store/TextureRect/Buttons/HBoxContainer/Talk" to="Store" method="_on_talk_pressed"]
+[connection signal="pressed" from="Store/TextureRect/Buttons/HBoxContainer/ToMachine" to="." method="_to_vending_mechine"]
 [connection signal="pressed" from="Home/TextureRect/Inventory/MenuTexture/CloseInventoryButton" to="Home" method="_on_close_inventory_button_pressed"]
 [connection signal="pressed" from="Home/TextureRect/PriceManager/TextureRect/HBoxContainer/Add1" to="Home" method="_on_add_1_pressed"]
 [connection signal="pressed" from="Home/TextureRect/PriceManager/TextureRect/HBoxContainer/Add5" to="Home" method="_on_add_5_pressed"]

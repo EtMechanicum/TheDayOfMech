@@ -3,9 +3,11 @@ extends Control
 
 var inventory = {
 	"cola" : preload("res://assets/resources/cola.tres"), 
-	#"hotdog" : preload("res://assets/resources/hotdog.tres"),
+	"hotdog" : preload("res://assets/resources/hotdog.tres"),
 	"ice" : preload("res://assets/resources/ice.tres"),
-	"chips" : preload("res://assets/resources/chips.tres")
+	"chips" : preload("res://assets/resources/chips.tres"),
+	"coffee" : preload("res://assets/resources/coffee.tres"),
+	"giant cookie" : preload("res://assets/resources/giant-cookie.tres")
 }
 
 var dialogue_container = {

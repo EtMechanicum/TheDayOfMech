@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://xrevm4ngvafu"]
+
+[ext_resource type="Script" uid="uid://diid208rf1hi1" path="res://item_resource.gd" id="1_owfxq"]
+[ext_resource type="Texture2D" uid="uid://cfoxy2w6ps8jo" path="res://assets/sprites/coffee.png" id="2_dpyi2"]
+
+[resource]
+script = ExtResource("1_owfxq")
+name = "coffee"
+sprite = ExtResource("2_dpyi2")
+category = "drink"
+machine_price = 15
+base_shop_price = 10
+metadata/_custom_type_script = "uid://diid208rf1hi1"

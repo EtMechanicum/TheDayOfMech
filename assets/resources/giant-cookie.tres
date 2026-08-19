@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://ch8w25pj1ucnq"]
+
+[ext_resource type="Script" uid="uid://diid208rf1hi1" path="res://item_resource.gd" id="1_mwsnm"]
+[ext_resource type="Texture2D" uid="uid://4tgf03uxk2cs" path="res://assets/sprites/cookie.png" id="2_0oeua"]
+
+[resource]
+script = ExtResource("1_mwsnm")
+name = "giant cookie"
+sprite = ExtResource("2_0oeua")
+category = "snack"
+shop_price = 20
+machine_price = 25
+base_shop_price = 20
+metadata/_custom_type_script = "uid://diid208rf1hi1"
