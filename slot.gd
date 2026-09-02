@@ -21,7 +21,7 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	var item_quantity_in_player = GameManager.player_inventory[item_source]
 	GameManager.player_inventory[item_source] -= 1
 	print("remaining items: %d"%[item_quantity_in_player])
-	#Update dei inventory UI
+	#Update inventory slot texture 
 	texture = data.texture
 	if item_source.name == "ice":
 		GameManager.machine_status_inventory()

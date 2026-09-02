@@ -77,6 +77,8 @@ func _on_game_manager_modify_prices():
 
 
 func _on_talk_pressed() -> void:
+	for button in get_node("TextureRect/Buttons/HBoxContainer").get_children():
+		button.disabled = true
 	talking = true
 	var dialogue_screen = dialogue_box.instantiate()
 	var dialogue_prob = randi_range(1, 10)
@@ -102,6 +104,8 @@ func _on_talk_pressed() -> void:
 
 	dialogue_screen.queue_free()
 	talking = false
+	for button in get_node("TextureRect/Buttons/HBoxContainer").get_children():
+		button.disabled = false
 
 
 func _on_ok_button_pressed() -> void:

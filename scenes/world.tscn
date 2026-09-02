@@ -2,18 +2,19 @@
 
 [ext_resource type="Script" uid="uid://darjqxa3fm2by" path="res://scenes/world.gd" id="1_q5onr"]
 [ext_resource type="Texture2D" uid="uid://b1i3gbkii36dm" path="res://assets/sprites/bozza logo 2.png" id="2_q5onr"]
-[ext_resource type="Texture2D" uid="uid://csf4b4jv028lc" path="res://assets/sprites/buttons.png" id="3_jhx03"]
+[ext_resource type="Texture2D" uid="uid://b26j6gdm187pk" path="res://assets/sprites/buttons.png" id="3_jhx03"]
 [ext_resource type="Texture2D" uid="uid://cqmfppe38852e" path="res://assets/sprites/overview.png" id="3_o8fc1"]
 [ext_resource type="Texture2D" uid="uid://b7s1bc1886pbt" path="res://assets/sprites/store.png" id="4_e3hyu"]
 [ext_resource type="Script" uid="uid://jj3l61h6h4kc" path="res://scenes/store.gd" id="4_i7141"]
+[ext_resource type="Texture2D" uid="uid://dh0b1jws3wcvk" path="res://assets/sprites/rain.png" id="6_lakw3"]
 [ext_resource type="Script" uid="uid://dpq8d1tqiedlj" path="res://scenes/hud.gd" id="6_qfnet"]
 [ext_resource type="Texture2D" uid="uid://d0xfmm4yibnye" path="res://assets/sprites/menus.png" id="7_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://7q3wh0xemx3f" path="res://scenes/machine_options.tscn" id="7_i7141"]
 [ext_resource type="Script" uid="uid://d0jinsyixuqca" path="res://scenes/machine_status.gd" id="8_e3hyu"]
-[ext_resource type="Texture2D" uid="uid://dla5uorpl86kq" path="res://assets/sprites/cooling.png" id="8_q5onr"]
+[ext_resource type="Texture2D" uid="uid://b8l6famlj2pwk" path="res://assets/sprites/cooling.png" id="8_q5onr"]
 [ext_resource type="FontFile" uid="uid://dy5vfjimtgsv8" path="res://assets/fonts/ChiKareGo2.ttf" id="10_dss4m"]
 [ext_resource type="PackedScene" uid="uid://cvgphxnukh710" path="res://scenes/prototypes/slot.tscn" id="10_e3hyu"]
-[ext_resource type="Texture2D" uid="uid://dc1ce2uwq1h11" path="res://assets/sprites/room.png" id="13_jhx03"]
+[ext_resource type="Texture2D" uid="uid://perdnpr7eilw" path="res://assets/sprites/room.png" id="13_jhx03"]
 [ext_resource type="Script" uid="uid://cwb8arkqnboh8" path="res://scenes/home.gd" id="13_o8fc1"]
 [ext_resource type="Script" uid="uid://cvfk7jja4bd34" path="res://scenes/price_manager.gd" id="15_xo05s"]
 [ext_resource type="Texture2D" uid="uid://dw5i85y8gn4s0" path="res://assets/sprites/wastelands.png" id="17_7t5mc"]
@@ -55,8 +56,12 @@ func _on_despawn_customer_signal() -> void:
 func _on_ok_button_pressed():
 	var report = get_node(\"TextBox\")
 	report.queue_free()
+	for button in get_node(\"TextureRect/MarginContainer/HBoxContainer\").get_children():
+		button.disabled = false
 
 func _on_reveneus_pressed() -> void:
+	for button in get_node(\"TextureRect/MarginContainer/HBoxContainer\").get_children():
+		button.disabled = true
 	var report = report.instantiate()
 	var container = report.get_node(\"MarginContainer/Panel/MarginContainer/VBoxContainer\")
 	var revenue_text = \"Total revenue since last time: %d\"%[GameManager.revenue]
@@ -80,7 +85,38 @@ func _on_reveneus_pressed() -> void:
 	#container.add_child(ok_button)
 	add_child(report)
 	GameManager.player_money += GameManager.revenue
+	GameManager.revenue = 0
+	GameManager.went_away_count = 0
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37qwj"]
+atlas = ExtResource("6_lakw3")
+region = Rect2(0, 0, 84, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_navra"]
+atlas = ExtResource("6_lakw3")
+region = Rect2(84, 0, 84, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luhhm"]
+atlas = ExtResource("6_lakw3")
+region = Rect2(168, 0, 84, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fh13f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37qwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_navra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luhhm")
+}],
+"loop": true,
+"name": &"rain",
+"speed": 6.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xo05s"]
 atlas = ExtResource("3_jhx03")
@@ -267,6 +303,40 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_o8fc1")
 
+[node name="Customer" type="Control" parent="MachineOverview/TextureRect" unique_id=1295449115]
+custom_minimum_size = Vector2(64, 96)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -419.0
+offset_top = -280.0
+offset_right = -355.0
+offset_bottom = -184.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(9, 9)
+
+[node name="CustomerSprite" type="TextureRect" parent="MachineOverview/TextureRect/Customer" unique_id=146166442]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Rain" type="AnimatedSprite2D" parent="MachineOverview/TextureRect" unique_id=36408678]
+visible = false
+position = Vector2(450, 800)
+scale = Vector2(10.695597, 10.658993)
+sprite_frames = SubResource("SpriteFrames_fh13f")
+animation = &"rain"
+frame = 1
+frame_progress = 0.2277324
+
 [node name="MarginContainer" type="MarginContainer" parent="MachineOverview/TextureRect" unique_id=152368665]
 layout_mode = 1
 anchors_preset = 12
@@ -352,31 +422,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_oo54l")
-expand_mode = 1
-
-[node name="Customer" type="Control" parent="MachineOverview/TextureRect" unique_id=1295449115]
-custom_minimum_size = Vector2(64, 96)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -419.0
-offset_top = -280.0
-offset_right = -355.0
-offset_bottom = -184.0
-grow_horizontal = 0
-grow_vertical = 2
-scale = Vector2(9, 9)
-
-[node name="CustomerSprite" type="TextureRect" parent="MachineOverview/TextureRect/Customer" unique_id=146166442]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 expand_mode = 1
 
 [node name="MachineOptions" parent="." unique_id=1349014209 instance=ExtResource("7_i7141")]
@@ -972,6 +1017,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("17_7t5mc")
+
+[node name="Rain" type="AnimatedSprite2D" parent="Wastelands/TextureRect" unique_id=1278871906]
+visible = false
+position = Vector2(450, 800)
+scale = Vector2(10.695597, 10.658993)
+sprite_frames = SubResource("SpriteFrames_fh13f")
+animation = &"rain"
+frame = 1
+frame_progress = 0.823207
 
 [node name="MarginContainer" type="MarginContainer" parent="Wastelands/TextureRect" unique_id=1309189269]
 layout_mode = 1
