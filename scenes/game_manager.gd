@@ -260,7 +260,8 @@ var customers = {
 var went_away_count = 0
 signal item_purched
 signal spawn_visible_customer(customer: CustomerResource)
-signal despawn_customer
+signal happy_customer(customer: CustomerResource)
+signal despawn_customer(customer: CustomerResource)
 
 func _on_customer_timer_timeout() -> void:
 	#generate customer type
@@ -282,7 +283,7 @@ func customer_picks_item(customer: CustomerResource, customer_thinking: Timer) -
 	if machine_broken:
 		print("A %s finds the machine broken." % customer.name)
 		went_away_count += 1
-		despawn_customer.emit()
+		despawn_customer.emit(customer)
 		return
 	var available_items := []
 	for item in machine_inventory:
@@ -291,7 +292,7 @@ func customer_picks_item(customer: CustomerResource, customer_thinking: Timer) -
 	if available_items.is_empty():
 		print("A %s finds a cosmic nothing." % customer.name)
 		went_away_count += 1
-		despawn_customer.emit()
+		despawn_customer.emit(customer)
 		return
 	var chosen = available_items.pick_random()
 	print("quantity pre customer:", machine_inventory[chosen])
@@ -299,7 +300,7 @@ func customer_picks_item(customer: CustomerResource, customer_thinking: Timer) -
 	print("quantity post customer:", machine_inventory[chosen])
 	revenue += chosen.machine_price
 	item_purched.emit(chosen)
-	despawn_customer.emit()
+	happy_customer.emit(customer)
 
 ### Save And Load ###
 const SAVE_PATH: String = "user://save.json"

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_1v8k6")
-name = "richz"
+name = "rich"
 budget = 31
 favorites = "soda"
 spawn_days = Array[String](["sunny"])
