@@ -189,6 +189,12 @@ bg_color = Color(1, 0.6666667, 0.36862746, 1)
 atlas = ExtResource("3_jhx03")
 region = Rect2(64.03101, 31.87128, 16.345634, 16.85326)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lakw3"]
+bg_color = Color(1, 0.6666667, 0.36862746, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm21f"]
+bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+
 [node name="World" type="Node" unique_id=447409703]
 script = ExtResource("1_q5onr")
 
@@ -475,7 +481,6 @@ grow_vertical = 2
 texture = ExtResource("4_e3hyu")
 
 [node name="ShopMenu" type="Control" parent="Store/TextureRect" unique_id=424097577]
-visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -1001,7 +1006,6 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_w7kh3")
 
 [node name="Wastelands" type="Control" parent="." unique_id=1913597111]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1027,7 +1031,7 @@ animation = &"rain"
 frame = 1
 frame_progress = 0.823207
 
-[node name="MarginContainer" type="MarginContainer" parent="Wastelands/TextureRect" unique_id=1309189269]
+[node name="Buttons" type="MarginContainer" parent="Wastelands/TextureRect" unique_id=1309189269]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1037,16 +1041,16 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_bottom = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Wastelands/TextureRect/MarginContainer" unique_id=568659868]
+[node name="HBoxContainer" type="HBoxContainer" parent="Wastelands/TextureRect/Buttons" unique_id=568659868]
 layout_mode = 2
 theme_override_constants/separation = 220
 alignment = 1
 
-[node name="ToHome" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=1933378610]
+[node name="ToHome" type="Button" parent="Wastelands/TextureRect/Buttons/HBoxContainer" unique_id=1933378610]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer/ToHome" unique_id=1992145015]
+[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/Buttons/HBoxContainer/ToHome" unique_id=1992145015]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1055,11 +1059,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_w7kh3")
 
-[node name="Event?" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=424854568]
+[node name="Event?" type="Button" parent="Wastelands/TextureRect/Buttons/HBoxContainer" unique_id=424854568]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer/Event?" unique_id=1603390039]
+[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/Buttons/HBoxContainer/Event?" unique_id=1603390039]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1068,11 +1072,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_0nbtd")
 
-[node name="ToStore" type="Button" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer" unique_id=1081697375]
+[node name="ToStore" type="Button" parent="Wastelands/TextureRect/Buttons/HBoxContainer" unique_id=1081697375]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/MarginContainer/HBoxContainer/ToStore" unique_id=1021154455]
+[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/Buttons/HBoxContainer/ToStore" unique_id=1021154455]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1080,6 +1084,57 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_o8fc1")
+
+[node name="DialogueContainer" type="MarginContainer" parent="Wastelands/TextureRect" unique_id=1941820039]
+custom_minimum_size = Vector2(900, 160)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -412.0
+offset_bottom = -184.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Wastelands/TextureRect/DialogueContainer" unique_id=1182659142]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lakw3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Wastelands/TextureRect/DialogueContainer/Panel" unique_id=708161088]
+custom_minimum_size = Vector2(860, 196)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Wastelands/TextureRect/DialogueContainer/Panel/MarginContainer" unique_id=725125159]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pm21f")
+
+[node name="MarginContainer" type="MarginContainer" parent="Wastelands/TextureRect/DialogueContainer/Panel/MarginContainer/Panel" unique_id=2022801889]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Wastelands/TextureRect/DialogueContainer/Panel/MarginContainer/Panel/MarginContainer" unique_id=1704830648]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 40
+text = "Hi. How's it goin'?
+Did you know that?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="MainMenu/TextureRect/MainMenuButtons/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/TextureRect/MainMenuButtons/VBoxContainer/LoadButton" to="." method="_on_load_pressed"]
@@ -1106,5 +1161,5 @@ texture = SubResource("AtlasTexture_o8fc1")
 [connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/ToWastelands" to="." method="_on_to_wastelands_button"]
 [connection signal="pressed" from="MachineStatus/TextureRect/MarginContainer/HBoxContainer/ToOverview" to="." method="_to_vending_mechine"]
-[connection signal="pressed" from="Wastelands/TextureRect/MarginContainer/HBoxContainer/ToHome" to="." method="_on_to_home_pressed"]
-[connection signal="pressed" from="Wastelands/TextureRect/MarginContainer/HBoxContainer/ToStore" to="." method="_to_store_from_machine"]
+[connection signal="pressed" from="Wastelands/TextureRect/Buttons/HBoxContainer/ToHome" to="." method="_on_to_home_pressed"]
+[connection signal="pressed" from="Wastelands/TextureRect/Buttons/HBoxContainer/ToStore" to="." method="_to_store_from_machine"]
