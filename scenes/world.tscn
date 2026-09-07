@@ -657,6 +657,21 @@ region = Rect2(0, 0, 150, 32)
 atlas = ExtResource("3_jhx03")
 region = Rect2(64, 52, 16, 8)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts3gi"]
+bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nbtd"]
+bg_color = Color(1, 0.6666667, 0.36862746, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37qwj"]
+bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_navra"]
+bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luhhm"]
+bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3hyu"]
 atlas = ExtResource("3_jhx03")
 region = Rect2(0, 48, 16, 16)
@@ -796,6 +811,7 @@ theme_override_font_sizes/font_size = 36
 text = "Edmech Labs - V 1.0"
 
 [node name="MachineOverview" type="Control" parent="." unique_id=328114699]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -964,7 +980,6 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_w7kh3")
 
 [node name="Store" type="Control" parent="." unique_id=1591577076]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1048,6 +1063,111 @@ custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 4
+
+[node name="ItemDescription" type="MarginContainer" parent="Store/TextureRect/ShopMenu" unique_id=1301034010]
+layout_mode = 0
+offset_top = -464.49207
+offset_right = 365.0
+offset_bottom = -45.98932
+
+[node name="Panel" type="Panel" parent="Store/TextureRect/ShopMenu/ItemDescription" unique_id=1803616179]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ts3gi")
+
+[node name="MarginContainer" type="MarginContainer" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel" unique_id=324838138]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 17.475964
+offset_right = 350.0
+offset_bottom = 401.0268
+
+[node name="Panel" type="Panel" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer" unique_id=650710364]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nbtd")
+
+[node name="ItemName" type="Label" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel" unique_id=168548607]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 8.278049
+offset_right = 331.0
+offset_bottom = 50.58823
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 36
+text = "ITEM NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemCategory" type="Label" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel" unique_id=1903054617]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 55.18715
+offset_right = 329.0
+offset_bottom = 96.57752
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 32
+text = "Category: Food"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemDescription" type="Label" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel" unique_id=1467863190]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 103.935814
+offset_right = 330.0
+offset_bottom = 240.98398
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 32
+text = "This is a super item ahadhdh dhdhd dahdrh eheheuef  ehehe eheeue"
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel" unique_id=689486186]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 243.74333
+offset_right = 329.0
+offset_bottom = 307.74335
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer" unique_id=1563285639]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Add1" type="Button" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=751529017]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_37qwj")
+text = "+"
+
+[node name="Quantity" type="Label" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=1369197630]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sub1" type="Button" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=695463336]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_navra")
+text = "-"
+
+[node name="Button" type="Button" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel" unique_id=1631084199]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 138.0
+offset_top = 311.80753
+offset_right = 202.0
+offset_bottom = 375.80753
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_luhhm")
+text = "BUY"
+icon_alignment = 1
 
 [node name="Buttons" type="MarginContainer" parent="Store/TextureRect" unique_id=265511257]
 layout_mode = 1
