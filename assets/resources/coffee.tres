@@ -7,6 +7,7 @@
 script = ExtResource("1_owfxq")
 name = "coffee"
 sprite = ExtResource("2_dpyi2")
+description = "Wanna go faster? "
 category = "drink"
 machine_price = 15
 base_shop_price = 10

@@ -1097,7 +1097,7 @@ text = "ITEM NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemCategory" type="Label" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel" unique_id=1903054617]
+[node name="ItemPrice" type="Label" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel" unique_id=1903054617]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 55.18715

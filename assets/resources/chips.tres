@@ -7,6 +7,7 @@
 script = ExtResource("1_ypu34")
 name = "chips"
 sprite = ExtResource("2_ypu34")
+description = "Crunchy chips in a super long and not so yummy can!"
 category = "food"
 machine_price = 15
 base_shop_price = 10

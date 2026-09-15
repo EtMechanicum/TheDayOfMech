@@ -58,14 +58,24 @@ func launch_inventory() -> void:
 		slot.pressed.connect(_on_product_selected.bind(item))
 	$"TextureRect/ShopMenu".show()
 
+#Questo metodo va cambiato: quando selezione un prodotto, si apre la finestra con
+#la descrizione, che poi ti porta a comprare con una conferma
 func _on_product_selected(item: Resource):
-	print("You've selected ", item.name)
-	if item.shop_price <= GameManager.player_money:
-		GameManager.player_money -= item.shop_price
-		GameManager.player_inventory[item] += 1
-		print(GameManager.player_inventory[item])
-	else:
-		print("Not enough money")
+#	print("You've selected ", item.name)
+#	if item.shop_price <= GameManager.player_money:
+#		GameManager.player_money -= item.shop_price
+#		GameManager.player_inventory[item] += 1
+#		print(GameManager.player_inventory[item])
+#	else:
+#		print("Not enough money")
+#nuova versione del metodo per la nuova UI:
+	var item_name_label = $"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/ItemName"
+	var item_price_label = $"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/ItemPrice"
+	var item_desc_label = $"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/ItemDescription"
+	#vanno mostrati per l'item selezionato il nome, prezzo e descrizione
+	item_name_label.text = item.name
+	item_price_label.text = str(item.shop_price) + " coins"
+	item_desc_label.text = item.description
 
 func _on_game_manager_modify_prices():
 	print("on modify prices new day")
