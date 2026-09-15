@@ -7,7 +7,7 @@
 script = ExtResource("1_1v8k6")
 name = "rich"
 budget = 31
-favorites = "soda"
+favorites = "drink"
 spawn_days = Array[String](["sunny"])
 sprite = ExtResource("2_p8hm8")
 metadata/_custom_type_script = "uid://c4brd1iq0525m"
