@@ -73,7 +73,7 @@ func _ready() -> void:
 	customer_timer.start()
 	#day timer
 	day_timer = Timer.new()
-	day_timer.wait_time = 5 #one day = two minutes for test purposes only
+	day_timer.wait_time = 600 #one day = two minutes for test purposes only
 	day_timer.one_shot = false
 	add_child(day_timer)
 	day_timer.timeout.connect(_set_up_new_day)
@@ -400,9 +400,9 @@ signal event_available(event : Resource)
 #Se un evento e' disponibile, viene inviato un segnale a Wastelands per gestirlo
 func special_event_available_checker():
 	var counter = 0
-	for qty in player_inventory: 
-		counter += qty
+	for item in player_inventory: 
+		counter += player_inventory[item]
 	for event in special_events:
-		if event.condition == counter && event.available:
-			event_available.emit(event)
+		if special_events[event].condition == counter && special_events[event].available:
+			event_available.emit(special_events[event])
 		break

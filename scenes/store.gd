@@ -126,6 +126,7 @@ func _on_ok_button_pressed() -> void:
 	$"TextureRect/ShopMenu/ItemDescription".hide()
 	for button in $"TextureRect/Buttons/HBoxContainer".get_children():
 		button.disabled = false
+	GameManager.special_event_available_checker()
 
 ## Sale management ##
 var current_product : Resource

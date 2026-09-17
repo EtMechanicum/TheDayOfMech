@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _show_event_available(event : Resource):
+	print("segnale evento emesso")
 	event_available = true
 	current_event = event
 	$"TextureRect/Buttons/HBoxContainer/Event?".disabled = false
@@ -32,6 +33,7 @@ func _run_event():
 	$"TextureRect/Buttons/HBoxContainer/ToStore".disabled = true
 	$"TextureRect".texture = current_event.background
 	$"TextureRect/DialogueContainer".show()
+	GameManager.day_timer.stop()
 	for line in current_event.dialogues:
 		line_window.text = line
 		await event_button.pressed
