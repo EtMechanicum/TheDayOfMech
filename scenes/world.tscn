@@ -696,6 +696,18 @@ region = Rect2(0, 64, 36, 13)
 atlas = ExtResource("7_e3hyu")
 region = Rect2(-0.18253183, -0.2993126, 84.367744, 32.386654)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rup4s"]
+bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kbfs"]
+bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f17e3"]
+bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2olw"]
+bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ctatt"]
 atlas = ExtResource("3_jhx03")
 region = Rect2(64.03104, 47.848244, 16.041039, 16.041039)
@@ -1415,7 +1427,6 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="PriceManager" type="Control" parent="Home/TextureRect" unique_id=1868085888]
-visible = false
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
 anchors_preset = 14
@@ -1435,6 +1446,20 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_kpybi")
 
+[node name="Label" type="Label" parent="Home/TextureRect/PriceManager/TextureRect" unique_id=519768443]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_top = 36.0
+offset_right = 110.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 42
+text = "Selling price"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Home/TextureRect/PriceManager/TextureRect" unique_id=1307389329]
 layout_mode = 1
 anchors_preset = 14
@@ -1449,20 +1474,25 @@ alignment = 1
 [node name="Add1" type="Button" parent="Home/TextureRect/PriceManager/TextureRect/HBoxContainer" unique_id=1322571342]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_rup4s")
 text = "+1"
 
 [node name="Add5" type="Button" parent="Home/TextureRect/PriceManager/TextureRect/HBoxContainer" unique_id=1960138278]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_4kbfs")
 text = "+5"
 
 [node name="CurrentPrice" type="Label" parent="Home/TextureRect/PriceManager/TextureRect/HBoxContainer" unique_id=1597322898]
 custom_minimum_size = Vector2(256, 96)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 42
 text = "Current Price"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1470,13 +1500,17 @@ vertical_alignment = 1
 [node name="Sub5" type="Button" parent="Home/TextureRect/PriceManager/TextureRect/HBoxContainer" unique_id=1555988175]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_f17e3")
 text = "-5"
 
 [node name="Sub1" type="Button" parent="Home/TextureRect/PriceManager/TextureRect/HBoxContainer" unique_id=688533939]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_x2olw")
 text = "-1"
 
 [node name="OkButton" type="Button" parent="Home/TextureRect/PriceManager/TextureRect" unique_id=1798744380]
@@ -1503,7 +1537,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_ctatt")
 
-[node name="MarginContainer" type="MarginContainer" parent="Home/TextureRect" unique_id=1243059116]
+[node name="Buttons" type="MarginContainer" parent="Home/TextureRect" unique_id=1243059116]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1513,16 +1547,16 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_bottom = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Home/TextureRect/MarginContainer" unique_id=2013346347]
+[node name="HBoxContainer" type="HBoxContainer" parent="Home/TextureRect/Buttons" unique_id=2013346347]
 layout_mode = 2
 theme_override_constants/separation = 108
 alignment = 1
 
-[node name="ToOverview" type="Button" parent="Home/TextureRect/MarginContainer/HBoxContainer" unique_id=2073567841]
+[node name="ToOverview" type="Button" parent="Home/TextureRect/Buttons/HBoxContainer" unique_id=2073567841]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/MarginContainer/HBoxContainer/ToOverview" unique_id=28038959]
+[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/Buttons/HBoxContainer/ToOverview" unique_id=28038959]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1531,12 +1565,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_w7kh3")
 
-[node name="InventoryButton" type="Button" parent="Home/TextureRect/MarginContainer/HBoxContainer" unique_id=861951589]
+[node name="InventoryButton" type="Button" parent="Home/TextureRect/Buttons/HBoxContainer" unique_id=861951589]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 
-[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/MarginContainer/HBoxContainer/InventoryButton" unique_id=867580117]
+[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/Buttons/HBoxContainer/InventoryButton" unique_id=867580117]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1545,12 +1579,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_munwf")
 
-[node name="Save" type="Button" parent="Home/TextureRect/MarginContainer/HBoxContainer" unique_id=300669256]
+[node name="Save" type="Button" parent="Home/TextureRect/Buttons/HBoxContainer" unique_id=300669256]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 
-[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/MarginContainer/HBoxContainer/Save" unique_id=1302446612]
+[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/Buttons/HBoxContainer/Save" unique_id=1302446612]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1559,11 +1593,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_ts3gi")
 
-[node name="ToWastelands" type="Button" parent="Home/TextureRect/MarginContainer/HBoxContainer" unique_id=650270006]
+[node name="ToWastelands" type="Button" parent="Home/TextureRect/Buttons/HBoxContainer" unique_id=650270006]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/MarginContainer/HBoxContainer/ToWastelands" unique_id=2139420322]
+[node name="TextureRect" type="TextureRect" parent="Home/TextureRect/Buttons/HBoxContainer/ToWastelands" unique_id=2139420322]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1784,10 +1818,10 @@ custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_dss4m")
 theme_override_font_sizes/font_size = 40
-text = "Hi. How's it goin'?
-Did you know that?"
+text = "Hi. How's it goin'?"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="pressed" from="MainMenu/TextureRect/MainMenuButtons/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/TextureRect/MainMenuButtons/VBoxContainer/LoadButton" to="." method="_on_load_pressed"]
@@ -1814,10 +1848,10 @@ vertical_alignment = 1
 [connection signal="pressed" from="Home/TextureRect/PriceManager/TextureRect/HBoxContainer/Sub5" to="Home" method="_on_sub_5_pressed"]
 [connection signal="pressed" from="Home/TextureRect/PriceManager/TextureRect/HBoxContainer/Sub1" to="Home" method="_on_sub_1_pressed"]
 [connection signal="pressed" from="Home/TextureRect/PriceManager/TextureRect/OkButton" to="Home" method="_on_price_manager_ok_button_pressed"]
-[connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/ToOverview" to="." method="_to_vending_mechine"]
-[connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/InventoryButton" to="Home" method="_on_inventory_pressed"]
-[connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/Save" to="." method="_on_save_pressed"]
-[connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/ToWastelands" to="." method="_on_to_wastelands_button"]
+[connection signal="pressed" from="Home/TextureRect/Buttons/HBoxContainer/ToOverview" to="." method="_to_vending_mechine"]
+[connection signal="pressed" from="Home/TextureRect/Buttons/HBoxContainer/InventoryButton" to="Home" method="_on_inventory_pressed"]
+[connection signal="pressed" from="Home/TextureRect/Buttons/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Home/TextureRect/Buttons/HBoxContainer/ToWastelands" to="." method="_on_to_wastelands_button"]
 [connection signal="pressed" from="MachineStatus/TextureRect/MarginContainer/HBoxContainer/ToOverview" to="." method="_to_vending_mechine"]
 [connection signal="pressed" from="Wastelands/TextureRect/Buttons/HBoxContainer/ToHome" to="." method="_on_to_home_pressed"]
 [connection signal="pressed" from="Wastelands/TextureRect/Buttons/HBoxContainer/Event?" to="Wastelands" method="_run_event"]

@@ -137,29 +137,31 @@ func _on_sub_1_pressed() -> void:
 	if current_product_quantity > 0:
 		current_product_quantity -= 1
 		$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer/Quantity".text = str(current_product_quantity)
-		$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/TotalCost".text = str(current_product_quantity * current_product.shop_price)
-	else:
-		var purchase_button = $"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer/Purchase"
-		if current_product_quantity * current_product.shop_price > GameManager.player_money && purchase_button.disabled == true:
-			purchase_button.disabled = false
-		return
+		$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/TotalCost".text = str(current_product_quantity * current_product.shop_price) + " coins"
+	var purchase_button = $"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer/Purchase"
+	if current_product_quantity * current_product.shop_price < GameManager.player_money && purchase_button.disabled == true:
+		purchase_button.disabled = false
+	return
 
 
 func _on_add_1_pressed() -> void:
 	current_product_quantity += 1
 	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer/Quantity".text = str(current_product_quantity)
 	if current_product_quantity * current_product.shop_price > GameManager.player_money:
-		$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer/Purchase".add_theme_color_override("font_color", Color.RED)
+		#$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer/Purchase".add_theme_color_override("font_color", Color.RED)
 		$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer/Purchase".disabled = true
-	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/TotalCost".text = str(current_product_quantity * current_product.shop_price)
+	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/TotalCost".text = str(current_product_quantity * current_product.shop_price) + " coins"
 	return
 
 
 func _on_cancel_pressed() -> void:
-	current_product_quantity = null
+	current_product = null
 	current_product_quantity = 0 
 	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer/Quantity".text = str(current_product_quantity)
+	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/TotalCost".text = "0 coins"
 	$"TextureRect/ShopMenu/ItemDescription".hide()
+	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer/Purchase".disabled = false
+
 
 
 func _on_purchase_pressed() -> void:
@@ -167,5 +169,6 @@ func _on_purchase_pressed() -> void:
 	GameManager.player_inventory[current_product] += current_product_quantity
 	current_product = null
 	current_product_quantity = 0
+	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/TotalCost".text = "0 coins"
 	$"TextureRect/ShopMenu/ItemDescription".hide()
 	return

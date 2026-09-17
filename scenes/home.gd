@@ -35,11 +35,13 @@ func spawn_inventory() -> void:
 			slot.add_theme_stylebox_override("normal", empty_style)
 			#slot.add_theme_stylebox_override("hover", empty_style)
 			slot.add_theme_stylebox_override("pressed", empty_style)
-			slot.text = "%d coins"%[element.shop_price]
+			#slot.text = "%d coins"%[element.machine_price]
 			slot.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			slot.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 			$"TextureRect/Inventory/MenuTexture/MarginContainer/GridContainer/HBoxContainer".add_child(slot)
 			slot.pressed.connect(_on_product_selected.bind(element))
+	for button in $TextureRect/Buttons/HBoxContainer.get_children():
+		button.disabled = true
 	$"TextureRect/Inventory".show()
 
 func _on_product_selected(item: Resource):
@@ -84,4 +86,6 @@ func update_item_price() -> void:
 
 
 func _on_close_inventory_button_pressed() -> void:
+	for button in $TextureRect/Buttons/HBoxContainer.get_children():
+		button.disabled = false
 	$"TextureRect/Inventory".hide()

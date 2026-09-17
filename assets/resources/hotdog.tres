@@ -9,4 +9,6 @@ name = "hotdog"
 sprite = ExtResource("2_im7u0")
 description = "Feeling too fit?"
 category = "food"
+machine_price = 40
+base_shop_price = 30
 metadata/_custom_type_script = "uid://diid208rf1hi1"

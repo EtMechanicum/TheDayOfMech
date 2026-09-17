@@ -3,7 +3,7 @@ extends Node
 var world_reference: Node
 
 ### PLAYER STUFF ###
-var player_money: float = 1000:
+var player_money: float = 50:
 	set(value):
 		player_money = value
 		_money_changed.emit(player_money)
@@ -40,7 +40,7 @@ var ice_timer: Timer
 var ice_warning: Timer
 
 const INVENTORY_SLOT = preload("res://scenes/prototypes/slot.tscn")
-const ICE_EFFECT_TIME = 1800.0 #seconds - 3600: one hour
+const ICE_EFFECT_TIME = 600.0 #seconds - 3600: one hour
 const ICE_WARNING = ICE_EFFECT_TIME/2
 
 signal _money_changed(new_amount: int)
@@ -67,7 +67,7 @@ func _ready() -> void:
 	ice_warning.start()
 	#customer timer
 	customer_timer = Timer.new()
-	customer_timer.wait_time = randi_range(10, 20) #two seconds - two minutes for now
+	customer_timer.wait_time = randi_range(30, 120) #two seconds - two minutes for now
 	add_child(customer_timer)
 	customer_timer.timeout.connect(_on_customer_timer_timeout)
 	customer_timer.start()
@@ -100,6 +100,7 @@ func inventory_update():
 		
 ###Draggable version of player's inventory (restock only)
 func inventory_restock():
+	var pixel_font: Font = load("res://assets/fonts/ChiKareGo2.ttf")
 	for child in inventory_container.get_children():
 		child.queue_free()
 	for item in player_inventory:
@@ -110,6 +111,11 @@ func inventory_restock():
 		slot.item_type = item
 		slot.texture = item.sprite
 		slot.size = Vector2(250, 250)
+		var label = Label.new()
+		label.text = str(quantity)
+		label.add_theme_font_override("font", pixel_font)
+		label.add_theme_font_size_override("font_size", 32)
+		slot.add_child(label)
 		inventory_container.add_child(slot)
 
 ### MACHINE STATUS SECTION ###
@@ -219,6 +225,8 @@ func _set_up_new_day():
 		_night_setup()
 		return
 	day_time = DAY
+	if(day_number % 7 ==0):
+		player_money -= 300
 	world_reference.get_node("HUD/DayCount").text = "Day " + str(day_number)
 	today_weather = weather_types_day.pick_random()
 	#If weather is sunny or cloudy, changing the texture rect of overview and wastelands is enough
@@ -266,7 +274,7 @@ func _on_customer_timer_timeout() -> void:
 	#var item_chosen = customer_picks_item(customer) #per ora non fa nulla
 	spawn_visible_customer.emit(customer)
 	var customer_thinking = Timer.new()
-	customer_thinking.wait_time = 10.0
+	customer_thinking.wait_time = 7.0
 	customer_thinking.one_shot = true
 	customer_thinking.timeout.connect(customer_picks_item.bind(customer, customer_thinking))
 	world_reference.add_child(customer_thinking)

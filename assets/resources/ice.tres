@@ -5,9 +5,10 @@
 
 [resource]
 script = ExtResource("1_sjo1j")
-name = "ice"
+name = "big ice ball"
 sprite = ExtResource("2_t5veb")
 description = "Frozen water, bro."
 category = "ice"
-base_shop_price = 5
+shop_price = 30
+base_shop_price = 15
 metadata/_custom_type_script = "uid://diid208rf1hi1"
