@@ -389,3 +389,20 @@ func _load() -> void:
 				slot.texture = load(save_data["machine_slots"][i-1])
 			else:
 				slot.texture = null
+
+## Special Events Stuff ##
+var special_events = {
+	"test" : preload("res://assets/resources/special_events/special_event_test.tres")
+}
+
+signal event_available(event : Resource)
+
+#Se un evento e' disponibile, viene inviato un segnale a Wastelands per gestirlo
+func special_event_available_checker():
+	var counter = 0
+	for qty in player_inventory: 
+		counter += qty
+	for event in special_events:
+		if event.condition == counter && event.available:
+			event_available.emit(event)
+		break

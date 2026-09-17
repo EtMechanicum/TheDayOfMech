@@ -76,6 +76,7 @@ func _on_product_selected(item: Resource):
 	item_name_label.text = item.name
 	item_price_label.text = str(item.shop_price) + " coins"
 	item_desc_label.text = item.description
+	$"TextureRect/ShopMenu/ItemDescription".show()
 
 func _on_game_manager_modify_prices():
 	print("on modify prices new day")
@@ -117,6 +118,6 @@ func _on_talk_pressed() -> void:
 	for button in get_node("TextureRect/Buttons/HBoxContainer").get_children():
 		button.disabled = false
 
-
 func _on_ok_button_pressed() -> void:
 	$"TextureRect/ShopMenu".hide()
+	$"TextureRect/ShopMenu/ItemDescription".hide()

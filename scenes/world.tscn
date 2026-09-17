@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bd61fjmxwki4m" path="res://assets/animation/customers/rich1_animation_idle.png" id="14_f17e3"]
 [ext_resource type="Script" uid="uid://cvfk7jja4bd34" path="res://scenes/price_manager.gd" id="15_xo05s"]
 [ext_resource type="Texture2D" uid="uid://dw5i85y8gn4s0" path="res://assets/sprites/wastelands.png" id="17_7t5mc"]
+[ext_resource type="Script" uid="uid://cu804m5sbedpl" path="res://scenes/wastelands.gd" id="27_0nbtd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q5onr"]
 
@@ -721,7 +722,6 @@ bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
 script = ExtResource("1_q5onr")
 
 [node name="MainMenu" type="Control" parent="." unique_id=133412698]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1635,6 +1635,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("27_0nbtd")
 
 [node name="TextureRect" type="TextureRect" parent="Wastelands" unique_id=1668492026]
 layout_mode = 1
@@ -1749,7 +1750,7 @@ offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Wastelands/TextureRect/DialogueContainer/Panel/MarginContainer/Panel/MarginContainer" unique_id=1704830648]
+[node name="DialogueLine" type="Label" parent="Wastelands/TextureRect/DialogueContainer/Panel/MarginContainer/Panel/MarginContainer" unique_id=1704830648]
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_dss4m")
@@ -1786,4 +1787,5 @@ vertical_alignment = 1
 [connection signal="pressed" from="Home/TextureRect/MarginContainer/HBoxContainer/ToWastelands" to="." method="_on_to_wastelands_button"]
 [connection signal="pressed" from="MachineStatus/TextureRect/MarginContainer/HBoxContainer/ToOverview" to="." method="_to_vending_mechine"]
 [connection signal="pressed" from="Wastelands/TextureRect/Buttons/HBoxContainer/ToHome" to="." method="_on_to_home_pressed"]
+[connection signal="pressed" from="Wastelands/TextureRect/Buttons/HBoxContainer/Event?" to="Wastelands" method="_run_event"]
 [connection signal="pressed" from="Wastelands/TextureRect/Buttons/HBoxContainer/ToStore" to="." method="_to_store_from_machine"]
