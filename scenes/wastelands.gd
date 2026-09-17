@@ -21,8 +21,8 @@ func _process(delta: float) -> void:
 
 func _show_event_available(event : Resource):
 	print("segnale evento emesso")
-	event_available = true
 	current_event = event
+	event_available = true
 	$"TextureRect/Buttons/HBoxContainer/Event?".disabled = false
 	
 
@@ -48,4 +48,4 @@ func _run_event():
 		$"TextureRect".texture = default_backgrounds["default_day"]
 	else:
 		$"TextureRect".texture = default_backgrounds["default_night"]
-	GameManager._set_up_new_day()
+	GameManager.day_timer.paused = false

@@ -58,6 +58,9 @@ func _to_machine_status_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
+	if(GameManager.day_number == 1):
+		new_game()
+		return
 	$MachineOverview.show()
 	$HUD.show()
 	$MachineOptions.hide()
@@ -65,6 +68,16 @@ func _on_play_button_pressed() -> void:
 	$MachineStatus.hide()
 	$Home.hide()
 
+func new_game() -> void:
+	$Wastelands.show()
+	$Wastelands/TextureRect/Buttons/HBoxContainer/ToHome.disabled = true
+	$Wastelands/TextureRect/Buttons/HBoxContainer/ToStore.disabled = true
+	$HUD.show()
+	$MachineOverview.hide()
+	$MachineOptions.hide()
+	$Store.hide()
+	$MachineStatus.hide()
+	$Home.hide()
 
 func _on_to_home_pressed() -> void:
 	$Home.show()

@@ -983,6 +983,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_w7kh3")
 
 [node name="Store" type="Control" parent="." unique_id=1591577076]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

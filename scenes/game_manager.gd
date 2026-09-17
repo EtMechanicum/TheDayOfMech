@@ -78,7 +78,8 @@ func _ready() -> void:
 	add_child(day_timer)
 	day_timer.timeout.connect(_set_up_new_day)
 	#_set_up_new_day()
-
+	if day_number == 1:
+		event_available.emit(special_events["intro"])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -392,7 +393,8 @@ func _load() -> void:
 
 ## Special Events Stuff ##
 var special_events = {
-	"test" : preload("res://assets/resources/special_events/special_event_test.tres")
+	"test" : preload("res://assets/resources/special_events/special_event_test.tres"),
+	"intro" : preload("res://assets/resources/special_events/intro.tres")
 }
 
 signal event_available(event : Resource)
