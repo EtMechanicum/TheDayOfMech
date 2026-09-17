@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://cvfk7jja4bd34" path="res://scenes/price_manager.gd" id="15_xo05s"]
 [ext_resource type="Texture2D" uid="uid://dw5i85y8gn4s0" path="res://assets/sprites/wastelands.png" id="17_7t5mc"]
 [ext_resource type="Script" uid="uid://cu804m5sbedpl" path="res://scenes/wastelands.gd" id="27_0nbtd"]
+[ext_resource type="AudioStream" uid="uid://bud1hvdv3ctlj" path="res://assets/audio/songs/tdom_song_0.mp3" id="29_37qwj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q5onr"]
 
@@ -1822,6 +1823,12 @@ text = "Hi. How's it goin'?"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1272842326]
+stream = ExtResource("29_37qwj")
+volume_db = -3.649
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="MainMenu/TextureRect/MainMenuButtons/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/TextureRect/MainMenuButtons/VBoxContainer/LoadButton" to="." method="_on_load_pressed"]
