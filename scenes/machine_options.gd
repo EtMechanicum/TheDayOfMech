@@ -14,7 +14,7 @@ func _on_restock_pressed() -> void:
 	GameManager.inventory_restock()
 
 func _on_item_purchased(item_purchased: ItemResource):
-	for slot in $TextureRect/GridContainer.get_children():
+	for slot in $TextureRect/RestockContainer/GridContainer.get_children():
 		if(slot.texture == item_purchased.sprite):
 			#For now it simply removes the texture
 			slot.texture = null

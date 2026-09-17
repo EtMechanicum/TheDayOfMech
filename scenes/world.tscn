@@ -664,10 +664,13 @@ bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nbtd"]
 bg_color = Color(1, 0.6666667, 0.36862746, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_navra"]
+bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37qwj"]
 bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_navra"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh13f"]
 bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luhhm"]
@@ -998,6 +1001,7 @@ grow_vertical = 2
 texture = ExtResource("4_e3hyu")
 
 [node name="ShopMenu" type="Control" parent="Store/TextureRect" unique_id=424097577]
+visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -1065,10 +1069,12 @@ size_flags_vertical = 3
 theme_override_constants/separation = 4
 
 [node name="ItemDescription" type="MarginContainer" parent="Store/TextureRect/ShopMenu" unique_id=1301034010]
+visible = false
 layout_mode = 0
-offset_top = -464.49207
-offset_right = 365.0
-offset_bottom = -45.98932
+offset_left = 2.0
+offset_top = -595.1017
+offset_right = 367.0
+offset_bottom = -80.02136
 
 [node name="Panel" type="Panel" parent="Store/TextureRect/ShopMenu/ItemDescription" unique_id=1803616179]
 layout_mode = 2
@@ -1079,7 +1085,7 @@ layout_mode = 0
 offset_left = 13.0
 offset_top = 17.475964
 offset_right = 350.0
-offset_bottom = 401.0268
+offset_bottom = 493.00546
 
 [node name="Panel" type="Panel" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer" unique_id=650710364]
 layout_mode = 2
@@ -1123,30 +1129,14 @@ autowrap_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel" unique_id=689486186]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 243.74333
+offset_top = 256.62033
 offset_right = 329.0
-offset_bottom = 307.74335
+offset_bottom = 320.62036
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer" unique_id=1563285639]
 layout_mode = 2
 theme_override_constants/separation = 64
 alignment = 1
-
-[node name="Add1" type="Button" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=751529017]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_dss4m")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_37qwj")
-text = "+"
-
-[node name="Quantity" type="Label" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=1369197630]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_dss4m")
-theme_override_font_sizes/font_size = 36
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Sub1" type="Button" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=695463336]
 custom_minimum_size = Vector2(64, 0)
@@ -1156,13 +1146,51 @@ theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_navra")
 text = "-"
 
-[node name="Button" type="Button" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel" unique_id=1631084199]
-custom_minimum_size = Vector2(64, 64)
+[node name="Quantity" type="Label" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=1369197630]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Add1" type="Button" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=751529017]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_37qwj")
+text = "+"
+
+[node name="TotalCost" type="Label" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel" unique_id=821112320]
 layout_mode = 0
-offset_left = 138.0
-offset_top = 311.80753
-offset_right = 202.0
-offset_bottom = 375.80753
+offset_left = 121.0
+offset_top = 348.59897
+offset_right = 213.0
+offset_bottom = 378.59897
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 32
+text = "Cost: 0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel" unique_id=1863894375]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 401.94656
+offset_right = 265.0
+offset_bottom = 465.94656
+theme_override_constants/separation = 64
+
+[node name="Cancel" type="Button" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer" unique_id=1795640757]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_fh13f")
+text = "BACK"
+
+[node name="Purchase" type="Button" parent="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer" unique_id=1631084199]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("10_dss4m")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_luhhm")
@@ -1771,6 +1799,10 @@ vertical_alignment = 1
 [connection signal="pressed" from="MachineOverview/TextureRect/MarginContainer/HBoxContainer/ToHome" to="." method="_on_to_home_pressed"]
 [connection signal="pressed" from="MachineOptions/MarginContainer/HBoxContainer/ToOverview" to="." method="_to_vending_mechine"]
 [connection signal="pressed" from="Store/TextureRect/ShopMenu/MenuTexture/OkButton" to="Store" method="_on_ok_button_pressed"]
+[connection signal="pressed" from="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer/Sub1" to="Store" method="_on_sub_1_pressed"]
+[connection signal="pressed" from="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer/Add1" to="Store" method="_on_add_1_pressed"]
+[connection signal="pressed" from="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer/Cancel" to="Store" method="_on_cancel_pressed"]
+[connection signal="pressed" from="Store/TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer/Purchase" to="Store" method="_on_purchase_pressed"]
 [connection signal="pressed" from="Store/TextureRect/Buttons/HBoxContainer/ToWastelands" to="." method="_on_to_wastelands_button"]
 [connection signal="pressed" from="Store/TextureRect/Buttons/HBoxContainer/Buy" to="Store" method="_on_buy_pressed"]
 [connection signal="pressed" from="Store/TextureRect/Buttons/HBoxContainer/Talk" to="Store" method="_on_talk_pressed"]

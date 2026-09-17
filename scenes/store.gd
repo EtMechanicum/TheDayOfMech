@@ -49,14 +49,16 @@ func launch_inventory() -> void:
 		slot.add_theme_stylebox_override("normal", empty_style)
 		#slot.add_theme_stylebox_override("hover", empty_style)
 		slot.add_theme_stylebox_override("pressed", empty_style)
-		slot.text = "%s - %d coins"%[item.name, item.shop_price]
-		slot.add_theme_font_override("font", item_text_font)
-		slot.add_theme_font_size_override("font_size", 24)
+		#slot.text = "%s - %d coins"%[item.name, item.shop_price]
+		#slot.add_theme_font_override("font", item_text_font)
+		#slot.add_theme_font_size_override("font_size", 24)
 		slot.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		slot.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 		$"TextureRect/ShopMenu/MenuTexture/MarginContainer/GridContainer/HBoxContainer".add_child(slot)
 		slot.pressed.connect(_on_product_selected.bind(item))
 	$"TextureRect/ShopMenu".show()
+	for button in $"TextureRect/Buttons/HBoxContainer".get_children():
+		button.disabled = true
 
 #Questo metodo va cambiato: quando selezione un prodotto, si apre la finestra con
 #la descrizione, che poi ti porta a comprare con una conferma
@@ -77,6 +79,7 @@ func _on_product_selected(item: Resource):
 	item_price_label.text = str(item.shop_price) + " coins"
 	item_desc_label.text = item.description
 	$"TextureRect/ShopMenu/ItemDescription".show()
+	current_product = item
 
 func _on_game_manager_modify_prices():
 	print("on modify prices new day")
@@ -121,3 +124,47 @@ func _on_talk_pressed() -> void:
 func _on_ok_button_pressed() -> void:
 	$"TextureRect/ShopMenu".hide()
 	$"TextureRect/ShopMenu/ItemDescription".hide()
+	for button in $"TextureRect/Buttons/HBoxContainer".get_children():
+		button.disabled = false
+
+## Sale management ##
+var current_product : Resource
+var current_product_quantity = 0
+
+
+func _on_sub_1_pressed() -> void:
+	if current_product_quantity > 0:
+		current_product_quantity -= 1
+		$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer/Quantity".text = str(current_product_quantity)
+		$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/TotalCost".text = str(current_product_quantity * current_product.shop_price)
+	else:
+		var purchase_button = $"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer/Purchase"
+		if current_product_quantity * current_product.shop_price > GameManager.player_money && purchase_button.disabled == true:
+			purchase_button.disabled = false
+		return
+
+
+func _on_add_1_pressed() -> void:
+	current_product_quantity += 1
+	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer/Quantity".text = str(current_product_quantity)
+	if current_product_quantity * current_product.shop_price > GameManager.player_money:
+		$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer/Purchase".add_theme_color_override("font_color", Color.RED)
+		$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/HBoxContainer/Purchase".disabled = true
+	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/TotalCost".text = str(current_product_quantity * current_product.shop_price)
+	return
+
+
+func _on_cancel_pressed() -> void:
+	current_product_quantity = null
+	current_product_quantity = 0 
+	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer/Quantity".text = str(current_product_quantity)
+	$"TextureRect/ShopMenu/ItemDescription".hide()
+
+
+func _on_purchase_pressed() -> void:
+	GameManager.player_money -= current_product_quantity * current_product.shop_price
+	GameManager.player_inventory[current_product] += current_product_quantity
+	current_product = null
+	current_product_quantity = 0
+	$"TextureRect/ShopMenu/ItemDescription".hide()
+	return
