@@ -3,7 +3,7 @@ extends Node
 var world_reference: Node
 
 ### PLAYER STUFF ###
-var player_money: float = 500:
+var player_money: float = 80:
 	set(value):
 		player_money = value
 		_money_changed.emit(player_money)

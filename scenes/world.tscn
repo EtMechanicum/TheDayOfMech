@@ -784,9 +784,19 @@ region = Rect2(47.913773, 47.945744, 16.434753, 16.15208)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rup4s"]
 texture = SubResource("AtlasTexture_fh13f")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4kbfs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rup4s"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(47.995865, 47.87419, 16.09459, 16.018314)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f17e3"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4kbfs"]
+texture = SubResource("AtlasTexture_rup4s")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb8sg"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(48.102703, 47.99214, 16.094593, 16.247147)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce70q"]
+texture = SubResource("AtlasTexture_pb8sg")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f17e3"]
 atlas = ExtResource("3_jhx03")
@@ -794,8 +804,6 @@ region = Rect2(63.94306, 31.990929, 16.75618, 16.350792)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2olw"]
 texture = SubResource("AtlasTexture_f17e3")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2olw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lakw3"]
 bg_color = Color(1, 0.6666667, 0.36862746, 1)
@@ -1985,10 +1993,9 @@ texture = SubResource("AtlasTexture_w7kh3")
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_rup4s")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_4kbfs")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_f17e3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4kbfs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce70q")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_x2olw")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_x2olw")
 
 [node name="ToStore" type="Button" parent="Wastelands/TextureRect/Buttons/HBoxContainer" unique_id=1081697375]
 custom_minimum_size = Vector2(128, 128)
