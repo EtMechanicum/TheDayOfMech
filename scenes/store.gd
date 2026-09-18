@@ -170,5 +170,6 @@ func _on_purchase_pressed() -> void:
 	current_product = null
 	current_product_quantity = 0
 	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/TotalCost".text = "0 coins"
+	$"TextureRect/ShopMenu/ItemDescription/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer/Quantity".text = str(current_product_quantity)
 	$"TextureRect/ShopMenu/ItemDescription".hide()
 	return

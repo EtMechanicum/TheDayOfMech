@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dw5i85y8gn4s0" path="res://assets/sprites/wastelands.png" id="1_q3o12"]
 [ext_resource type="Script" uid="uid://c14tglcu2xu1w" path="res://assets/resources/special_events/special_event.gd" id="2_dskko"]
-[ext_resource type="AudioStream" uid="uid://bud1hvdv3ctlj" path="res://assets/audio/songs/tdom_song_0.mp3" id="2_l6pjw"]
+[ext_resource type="AudioStream" uid="uid://sj4maw5a0mvt" path="res://assets/audio/songs/tdom_summer_night.mp3" id="2_l6pjw"]
 
 [resource]
 script = ExtResource("2_dskko")
