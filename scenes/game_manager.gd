@@ -3,7 +3,7 @@ extends Node
 var world_reference: Node
 
 ### PLAYER STUFF ###
-var player_money: float = 50:
+var player_money: float = 500:
 	set(value):
 		player_money = value
 		_money_changed.emit(player_money)
@@ -78,8 +78,10 @@ func _ready() -> void:
 	add_child(day_timer)
 	day_timer.timeout.connect(_set_up_new_day)
 	#_set_up_new_day()
-	if day_number == 1:
-		event_available.emit(special_events["intro"])
+	#in questo punto, launched once risulta, erroneamente, false. Meglio toglierla da qui.
+	#print("launched once: " + str(special_events["intro"].launched_once))
+	#if day_number == 1:
+	#	special_event_available_checker()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -323,7 +325,9 @@ var save_data: Dictionary = {
 	"machine_broken" : false,
 	"broken_fuses" : 0,
 	#day stuff
-	"day_number" : 0
+	"day_number" : 0,
+	#special events
+	"special_events" : null
 }
 
 func _save() -> void:
@@ -331,6 +335,10 @@ func _save() -> void:
 	var machine_slots_container = world_reference.get_node("MachineOptions/TextureRect/RestockContainer/GridContainer")
 	var machine_inventory_save = {}
 	var player_inventory_save = {}
+	var events_save = {}
+	for event in special_events:
+		events_save[event] = special_events[event].launched_once
+	save_data["special_events"] = events_save
 	for item in machine_inventory:
 		machine_inventory_save[item.resource_path] = machine_inventory[item]
 	for item in player_inventory:
@@ -353,6 +361,14 @@ func _save() -> void:
 			save_data["machine_slots"].append("")
 	file.store_var(save_data)
 	file.close()
+	var saved_message = world_reference.get_node("Home/TextureRect/SavedMessage")
+	saved_message.show()
+	for button in world_reference.get_node("Home/TextureRect/Buttons/HBoxContainer").get_children():
+		button.disabled = true
+	await saved_message.get_node("Panel/MarginContainer/Panel/OKSaved").pressed
+	saved_message.hide()
+	for button in world_reference.get_node("Home/TextureRect/Buttons/HBoxContainer").get_children():
+		button.disabled = false
 
 func _load() -> void:
 	var machine_slots_container = world_reference.get_node("MachineOptions/TextureRect/RestockContainer/GridContainer")
@@ -398,6 +414,11 @@ func _load() -> void:
 				slot.texture = load(save_data["machine_slots"][i-1])
 			else:
 				slot.texture = null
+		var special_events_conditions = save_data["special_events"]
+		print(special_events_conditions)
+		for event_name in special_events_conditions: #event is a string, the name of the event
+			special_events[event_name].launched_once = special_events_conditions[event_name]
+		 
 
 ## Special Events Stuff ##
 var special_events = {
@@ -414,5 +435,6 @@ func special_event_available_checker():
 		counter += player_inventory[item]
 	for event in special_events:
 		if special_events[event].condition == counter && special_events[event].available:
-			event_available.emit(special_events[event])
-		break
+			if special_events[event].one_shot_event && special_events[event].launched_once == false:
+				event_available.emit(special_events[event])
+				break

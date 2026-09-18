@@ -721,6 +721,18 @@ region = Rect2(0.08238888, 32.08239, 16.19376, 15.942043)
 atlas = ExtResource("3_jhx03")
 region = Rect2(32.133152, 31.934261, 15.939529, 15.939526)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_817gm"]
+bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggc52"]
+bg_color = Color(1, 0.6666667, 0.36862746, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l8ah6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6do4"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(63.906593, 47.850594, 16.053505, 16.053505)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t5mc"]
 bg_color = Color(1, 0.6666667, 0.36862746, 1)
 
@@ -1606,6 +1618,75 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_o8fc1")
+
+[node name="SavedMessage" type="MarginContainer" parent="Home/TextureRect" unique_id=1823201779]
+visible = false
+custom_minimum_size = Vector2(420, 240)
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.012
+offset_left = 245.0
+offset_top = 679.0
+offset_right = 665.0
+offset_bottom = 899.8
+
+[node name="Panel" type="Panel" parent="Home/TextureRect/SavedMessage" unique_id=1606302753]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_817gm")
+
+[node name="MarginContainer" type="MarginContainer" parent="Home/TextureRect/SavedMessage/Panel" unique_id=245438034]
+custom_minimum_size = Vector2(390, 210)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Home/TextureRect/SavedMessage/Panel/MarginContainer" unique_id=57376498]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ggc52")
+
+[node name="Label" type="Label" parent="Home/TextureRect/SavedMessage/Panel/MarginContainer/Panel" unique_id=1506359096]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -59.0
+offset_right = 126.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 48
+text = "GAME SAVED!"
+
+[node name="OKSaved" type="Button" parent="Home/TextureRect/SavedMessage/Panel/MarginContainer/Panel" unique_id=2061126177]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -88.0
+offset_right = 34.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l8ah6")
+icon = SubResource("AtlasTexture_q6do4")
+expand_icon = true
 
 [node name="MachineStatus" type="Control" parent="." unique_id=794672676]
 visible = false

@@ -48,4 +48,6 @@ func _run_event():
 		$"TextureRect".texture = default_backgrounds["default_day"]
 	else:
 		$"TextureRect".texture = default_backgrounds["default_night"]
+	current_event.available = false
+	current_event.launched_once = true
 	GameManager.day_timer.paused = false

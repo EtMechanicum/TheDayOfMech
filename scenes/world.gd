@@ -78,6 +78,7 @@ func new_game() -> void:
 	$Store.hide()
 	$MachineStatus.hide()
 	$Home.hide()
+	GameManager.event_available.emit(GameManager.special_events["intro"])
 
 func _on_to_home_pressed() -> void:
 	$Home.show()

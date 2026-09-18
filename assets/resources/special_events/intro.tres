@@ -8,7 +8,6 @@ script = ExtResource("2_dskko")
 name = "intro"
 dialogues = Array[String]([" I like summer.", "It always makes me feel something.", "Something weird. Warm.", "I don't know what it is.", "Anyway, there's been stuff happening.", "I bought a vending machine.", "You know... Like... A vending machine. Yeah.", "I thought ti could be a fun way for passive income.", "And... That's pretty much it. I just felt like having it.", "I'm still learning how to deal with it.", "It's mostly about getting the right products,", "Selling them to the right people,", "Or what I think it's the right people.", "They come, they buy.", "And when I think it's time, I get the revenues.", "I just gotta be careful and constantly check the cooling system.", "I have to keep it full of ice.", "It's not hard to deal with, but it's something, I guess.", "There's this girl. Jessica.", "She's been a friend of mine for a while.", "I buy my stuff from her.", "And... This place.", "I call this 'the Wastelands'.", "I like it. And I get lost in here... Sometimes.", "Whatever.", "Let's see what happens.", "I have to pay my bills every week. 300 coins. Ugh."])
 background = ExtResource("1_q3o12")
-condition = -1
 one_shot_event = true
 available = true
 metadata/_custom_type_script = "uid://c14tglcu2xu1w"

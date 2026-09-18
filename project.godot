@@ -24,6 +24,7 @@ GameManager="*uid://pdcl4p2cv76v"
 window/size/viewport_width=900
 window/size/viewport_height=1600
 window/stretch/mode="viewport"
+window/handheld/orientation=1
 
 [editor_plugins]
 
