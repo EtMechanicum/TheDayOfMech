@@ -26,24 +26,29 @@ func _show_event_available(event : Resource):
 	current_event = event
 	event_available = true
 	$"TextureRect/Buttons/HBoxContainer/Event?".disabled = false
-	
+
+func _on_event_pressed() -> void:
+	_run_event()
 
 func _run_event():
 	var line_window = $"TextureRect/DialogueContainer/Panel/MarginContainer/Panel/MarginContainer/DialogueLine"
-	var event_button = $"TextureRect/Buttons/HBoxContainer/Event?"
+	var event_button = $"TextureRect/DialogueContainer/Panel/MarginContainer/Panel/NextLine"
 	$"TextureRect/Buttons/HBoxContainer/ToHome".disabled = true
 	$"TextureRect/Buttons/HBoxContainer/ToStore".disabled = true
+	$"TextureRect/Buttons/HBoxContainer/Event?".disabled = true
 	$"TextureRect".texture = current_event.background
 	$"TextureRect/DialogueContainer".show()
 	GameManager.day_timer.stop()
 	var audioplayer = get_parent().get_node("AudioStreamPlayer")
 	audioplayer.stream = current_event.ost
+	audioplayer.play()
 	for line in current_event.dialogues:
 		line_window.text = line
 		await event_button.pressed
 	$"TextureRect/DialogueContainer".hide()
 	#finiti i dialoghi
 	audioplayer.stream = default_track
+	audioplayer.play()
 	event_button.disabled = true
 	$"TextureRect/Buttons/HBoxContainer/ToHome".disabled = false
 	$"TextureRect/Buttons/HBoxContainer/ToStore".disabled = false

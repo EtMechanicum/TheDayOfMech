@@ -811,6 +811,8 @@ bg_color = Color(1, 0.6666667, 0.36862746, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm21f"]
 bg_color = Color(0.1254902, 0.23529412, 0.3372549, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4kbfs"]
+
 [node name="World" type="Node" unique_id=447409703]
 script = ExtResource("1_q5onr")
 
@@ -2047,8 +2049,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 31.0
-offset_bottom = -36.0
+offset_top = 2.0
+offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2061,6 +2063,23 @@ text = "Hi. How's it goin'?"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="NextLine" type="Button" parent="Wastelands/TextureRect/DialogueContainer/Panel/MarginContainer/Panel" unique_id=146334381]
+custom_minimum_size = Vector2(86, 64)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("10_dss4m")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4kbfs")
+text = "NEXT >"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1272842326]
 stream = ExtResource("29_37qwj")
@@ -2102,5 +2121,5 @@ parameters/looping = true
 [connection signal="pressed" from="Home/TextureRect/ExitConfirmation/Panel/MarginContainer/Panel/MarginContainer/HBoxContainer/No" to="Home" method="_on_no_pressed"]
 [connection signal="pressed" from="MachineStatus/TextureRect/MarginContainer/HBoxContainer/ToOverview" to="." method="_to_vending_mechine"]
 [connection signal="pressed" from="Wastelands/TextureRect/Buttons/HBoxContainer/ToHome" to="." method="_on_to_home_pressed"]
-[connection signal="pressed" from="Wastelands/TextureRect/Buttons/HBoxContainer/Event?" to="Wastelands" method="_run_event"]
+[connection signal="pressed" from="Wastelands/TextureRect/Buttons/HBoxContainer/Event?" to="Wastelands" method="_on_event_pressed"]
 [connection signal="pressed" from="Wastelands/TextureRect/Buttons/HBoxContainer/ToStore" to="." method="_to_store_from_machine"]
