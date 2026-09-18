@@ -49,7 +49,16 @@ script/source = "extends Control
 
 const report = preload(\"res://scenes/text_box.tscn\")
 # Called when the node enters the scene tree for the first time.
+const machine_sprites = {
+	\"normal_day\" : preload(\"res://assets/sprites/overview.png\"),
+	\"normal_night\" : preload(\"res://assets/sprites/overview-night.png\"), 
+	\"broken_day\" : preload(\"res://assets/sprites/overview_off.png\"),
+	\"broken_night\" : preload(\"res://assets/sprites/overview_night_off.png\")
+}
 func _ready() -> void:
+	GameManager.ice_renewed.connect(_on_game_manager_ice_renewed)
+	GameManager.ice_cooldown.connect(_on_game_manager_ice_cooldown)
+	
 	GameManager.spawn_visible_customer.connect(_on_spawn_customer_signal)
 	GameManager.despawn_customer.connect(_on_despawn_customer_signal)
 	GameManager.happy_customer.connect(_on_happy_customer_signal)
@@ -58,6 +67,18 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _on_game_manager_ice_cooldown() -> void:
+	if GameManager.day_time == \"day\":
+		$\"TextureRect\".texture = machine_sprites[\"broken_day\"]
+	elif GameManager.day_time == \"night\":
+		$TextureRect.texture = machine_sprites[\"broken_night\"]
+
+func _on_game_manager_ice_renewed() -> void:
+	if GameManager.day_time == \"day\":
+		$\"TextureRect\".texture = machine_sprites[\"normal_day\"]
+	elif GameManager.day_time == \"night\":
+		$TextureRect.texture = machine_sprites[\"normal_night\"]
 
 #makes the customer visible
 func _on_spawn_customer_signal(customer: CustomerResource) -> void:
