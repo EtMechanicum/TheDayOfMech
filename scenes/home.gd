@@ -89,3 +89,13 @@ func _on_close_inventory_button_pressed() -> void:
 	for button in $TextureRect/Buttons/HBoxContainer.get_children():
 		button.disabled = false
 	$"TextureRect/Inventory".hide()
+
+#exit?
+func _on_exit_pressed() -> void:
+	$"TextureRect/ExitConfirmation".show()
+#exit yes
+func _on_yes_pressed() -> void:
+	get_tree().quit()
+#exit no
+func _on_no_pressed() -> void:
+	$"TextureRect/ExitConfirmation".hide()
