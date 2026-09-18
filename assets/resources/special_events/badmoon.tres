@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SpecialEvent" format=3 uid="uid://bnj15w7p0hi50"]
+
+[ext_resource type="Script" uid="uid://c14tglcu2xu1w" path="res://assets/resources/special_events/special_event.gd" id="1_57kwt"]
+[ext_resource type="Texture2D" uid="uid://ccvtot7bhynhy" path="res://assets/sprites/special_events/the-moon.png" id="1_su5ev"]
+[ext_resource type="AudioStream" uid="uid://dnrhfao42lk8o" path="res://assets/audio/songs/tdom_moon_song.mp3" id="2_bef3a"]
+
+[resource]
+script = ExtResource("1_57kwt")
+name = "badmoon"
+dialogues = Array[String](["My eyes hurt.", "Yet I feel good. And bad. Sick.", "It's a tasty uneasiness.", "We like it.", "Don't we?", "The stars.", "Always there.", "Splendid.", "Suspended.", "Forever.", "...", "...", "...", "I don't like here.", "And yet the warmth inside me makes me stay.", "Longer.", "Just a little longer.", "...", "...", "...", "Life is beautiful.", "The moon grins.", "I'm going home.", "Please, don't hug me. ", "I'm scared."])
+background = ExtResource("1_su5ev")
+ost = ExtResource("2_bef3a")
+condition = 13
+available = true
+metadata/_custom_type_script = "uid://c14tglcu2xu1w"

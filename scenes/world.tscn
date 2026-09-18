@@ -777,9 +777,25 @@ bg_color = Color(0.1254902, 0.23529412, 0.36862746, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t5mc"]
 bg_color = Color(1, 0.6666667, 0.36862746, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0nbtd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh13f"]
 atlas = ExtResource("3_jhx03")
-region = Rect2(64.03101, 31.87128, 16.345634, 16.85326)
+region = Rect2(47.913773, 47.945744, 16.434753, 16.15208)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rup4s"]
+texture = SubResource("AtlasTexture_fh13f")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4kbfs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f17e3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f17e3"]
+atlas = ExtResource("3_jhx03")
+region = Rect2(63.94306, 31.990929, 16.75618, 16.350792)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2olw"]
+texture = SubResource("AtlasTexture_f17e3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2olw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lakw3"]
 bg_color = Color(1, 0.6666667, 0.36862746, 1)
@@ -1968,15 +1984,11 @@ texture = SubResource("AtlasTexture_w7kh3")
 [node name="Event?" type="Button" parent="Wastelands/TextureRect/Buttons/HBoxContainer" unique_id=424854568]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Wastelands/TextureRect/Buttons/HBoxContainer/Event?" unique_id=1603390039]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_0nbtd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rup4s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4kbfs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f17e3")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_x2olw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x2olw")
 
 [node name="ToStore" type="Button" parent="Wastelands/TextureRect/Buttons/HBoxContainer" unique_id=1081697375]
 custom_minimum_size = Vector2(128, 128)

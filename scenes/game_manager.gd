@@ -425,8 +425,8 @@ func _load() -> void:
 
 ## Special Events Stuff ##
 var special_events = {
-	"test" : preload("res://assets/resources/special_events/special_event_test.tres"),
-	"intro" : preload("res://assets/resources/special_events/intro.tres")
+	"intro" : preload("res://assets/resources/special_events/intro.tres"),
+	"badmoon" : preload("res://assets/resources/special_events/badmoon.tres")
 }
 
 signal event_available(event : Resource)

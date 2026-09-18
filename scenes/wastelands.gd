@@ -8,6 +8,8 @@ var default_backgrounds = {
 	"default_night" : preload("res://assets/sprites/wastelands-night.png")
 }
 
+var default_track = preload("res://assets/audio/songs/tdom_song_0.mp3")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.event_available.connect(_show_event_available)
@@ -34,11 +36,14 @@ func _run_event():
 	$"TextureRect".texture = current_event.background
 	$"TextureRect/DialogueContainer".show()
 	GameManager.day_timer.stop()
+	var audioplayer = get_parent().get_node("AudioStreamPlayer")
+	audioplayer.stream = current_event.ost
 	for line in current_event.dialogues:
 		line_window.text = line
 		await event_button.pressed
 	$"TextureRect/DialogueContainer".hide()
 	#finiti i dialoghi
+	audioplayer.stream = default_track
 	event_button.disabled = true
 	$"TextureRect/Buttons/HBoxContainer/ToHome".disabled = false
 	$"TextureRect/Buttons/HBoxContainer/ToStore".disabled = false
