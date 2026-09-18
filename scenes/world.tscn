@@ -1971,6 +1971,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_o8fc1")
 
 [node name="DialogueContainer" type="MarginContainer" parent="Wastelands/TextureRect" unique_id=1941820039]
+visible = false
 custom_minimum_size = Vector2(900, 160)
 layout_mode = 1
 anchors_preset = 12

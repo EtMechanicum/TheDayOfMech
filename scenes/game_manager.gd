@@ -40,7 +40,7 @@ var ice_timer: Timer
 var ice_warning: Timer
 
 const INVENTORY_SLOT = preload("res://scenes/prototypes/slot.tscn")
-const ICE_EFFECT_TIME = 600.0 #seconds - 3600: one hour
+const ICE_EFFECT_TIME = 490.0 #seconds - 3600: one hour
 const ICE_WARNING = ICE_EFFECT_TIME/2
 
 signal _money_changed(new_amount: int)
@@ -67,7 +67,7 @@ func _ready() -> void:
 	ice_warning.start()
 	#customer timer
 	customer_timer = Timer.new()
-	customer_timer.wait_time = randi_range(30, 120) #two seconds - two minutes for now
+	customer_timer.wait_time = randi_range(20, 45) #two seconds - two minutes for now
 	add_child(customer_timer)
 	customer_timer.timeout.connect(_on_customer_timer_timeout)
 	customer_timer.start()
@@ -208,14 +208,14 @@ func _night_setup():
 		var rain_animation = world_reference.get_node("MachineOverview/TextureRect/Rain")
 		rain_animation.show()
 		rain_animation.play()
-		rain_animation = world_reference.get_node("MachineOverview/TextureRect/Rain")
+		rain_animation = world_reference.get_node("Wastelands/TextureRect/Rain")
 		rain_animation.show()
 		rain_animation.play()
 	else:
 		var rain_animation = world_reference.get_node("MachineOverview/TextureRect/Rain")
 		rain_animation.hide()
 		rain_animation.stop()
-		rain_animation = world_reference.get_node("MachineOverview/TextureRect/Rain")
+		rain_animation = world_reference.get_node("Wastelands/TextureRect/Rain")
 		rain_animation.hide()
 		rain_animation.stop()
 	#increase day count
@@ -292,8 +292,11 @@ func customer_picks_item(customer: CustomerResource, customer_thinking: Timer) -
 		return
 	var available_items := []
 	for item in machine_inventory:
-		if machine_inventory[item] > 0 and customer.favorites == item.category:
-			available_items.append(item)
+		#if machine_inventory[item] > 0 and customer.favorites == item.category:
+		if machine_inventory[item] > 0:
+			for category in item.categories:
+				if customer.favorites.has(category) && customer.budget >= item.machine_price:
+					available_items.append(item)
 	if available_items.is_empty():
 		print("A %s finds a cosmic nothing." % customer.name)
 		went_away_count += 1
