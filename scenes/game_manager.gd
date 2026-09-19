@@ -40,7 +40,7 @@ var ice_timer: Timer
 var ice_warning: Timer
 
 const INVENTORY_SLOT = preload("res://scenes/prototypes/slot.tscn")
-const ICE_EFFECT_TIME = 490.0 #seconds - 3600: one hour
+const ICE_EFFECT_TIME = 300.0 #seconds - 3600: one hour
 const ICE_WARNING = ICE_EFFECT_TIME/2
 
 signal _money_changed(new_amount: int)
@@ -73,7 +73,7 @@ func _ready() -> void:
 	customer_timer.start()
 	#day timer
 	day_timer = Timer.new()
-	day_timer.wait_time = 300 #one day = two minutes for test purposes only
+	day_timer.wait_time = 240 #one day = two minutes for test purposes only
 	day_timer.one_shot = false
 	add_child(day_timer)
 	day_timer.timeout.connect(_set_up_new_day)

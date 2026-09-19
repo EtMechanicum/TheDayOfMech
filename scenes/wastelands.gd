@@ -49,7 +49,6 @@ func _run_event():
 	#finiti i dialoghi
 	audioplayer.stream = default_track
 	audioplayer.play()
-	event_button.disabled = true
 	$"TextureRect/Buttons/HBoxContainer/ToHome".disabled = false
 	$"TextureRect/Buttons/HBoxContainer/ToStore".disabled = false
 	#dovrei aggiungere una sorta di transizione tra eventi e momenti normali. Altrimenti e' troppo brusco
