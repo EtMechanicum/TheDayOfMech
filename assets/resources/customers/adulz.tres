@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_wf06s")
 name = "adult"
-budget = 30
+budget = 50
 favorites = Array[String](["food", "hot_drink"])
 spawn_days = Array[String](["sunny", "clear", "cold"])
 sprite = ExtResource("2_nn8hk")

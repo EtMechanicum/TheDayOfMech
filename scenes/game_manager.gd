@@ -67,7 +67,7 @@ func _ready() -> void:
 	ice_warning.start()
 	#customer timer
 	customer_timer = Timer.new()
-	customer_timer.wait_time = randi_range(20, 45) #two seconds - two minutes for now
+	customer_timer.wait_time = randi_range(15, 30) #two seconds - two minutes for now
 	add_child(customer_timer)
 	customer_timer.timeout.connect(_on_customer_timer_timeout)
 	customer_timer.start()
@@ -426,7 +426,9 @@ func _load() -> void:
 ## Special Events Stuff ##
 var special_events = {
 	"intro" : preload("res://assets/resources/special_events/intro.tres"),
-	"badmoon" : preload("res://assets/resources/special_events/badmoon.tres")
+	"badmoon" : preload("res://assets/resources/special_events/badmoon.tres"),
+	"nobody" : preload("res://assets/resources/special_events/nobody.tres"),
+	"sock" : preload("res://assets/resources/special_events/sock.tres")
 }
 
 signal event_available(event : Resource)
