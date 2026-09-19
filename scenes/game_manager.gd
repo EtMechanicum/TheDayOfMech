@@ -3,7 +3,7 @@ extends Node
 var world_reference: Node
 
 ### PLAYER STUFF ###
-var player_money: float = 80:
+var player_money: float = 500:
 	set(value):
 		player_money = value
 		_money_changed.emit(player_money)
@@ -67,13 +67,13 @@ func _ready() -> void:
 	ice_warning.start()
 	#customer timer
 	customer_timer = Timer.new()
-	customer_timer.wait_time = randi_range(15, 30) #two seconds - two minutes for now
+	customer_timer.wait_time = randi_range(15, 25) #two seconds - two minutes for now
 	add_child(customer_timer)
 	customer_timer.timeout.connect(_on_customer_timer_timeout)
 	customer_timer.start()
 	#day timer
 	day_timer = Timer.new()
-	day_timer.wait_time = 600 #one day = two minutes for test purposes only
+	day_timer.wait_time = 300 #one day = two minutes for test purposes only
 	day_timer.one_shot = false
 	add_child(day_timer)
 	day_timer.timeout.connect(_set_up_new_day)

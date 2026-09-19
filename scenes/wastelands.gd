@@ -38,7 +38,7 @@ func _run_event():
 	$"TextureRect/Buttons/HBoxContainer/Event?".disabled = true
 	$"TextureRect".texture = current_event.background
 	$"TextureRect/DialogueContainer".show()
-	GameManager.day_timer.stop()
+	GameManager.day_timer.paused = true
 	var audioplayer = get_parent().get_node("AudioStreamPlayer")
 	audioplayer.stream = current_event.ost
 	audioplayer.play()
