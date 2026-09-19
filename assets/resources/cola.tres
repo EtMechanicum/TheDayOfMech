@@ -8,6 +8,7 @@ script = ExtResource("1_xbit2")
 name = "cola"
 sprite = ExtResource("2_xbit2")
 description = "Refreshing microplastic drink with cola flavor!"
+categories = Array[String](["drink"])
 machine_price = 15
 base_shop_price = 10
 metadata/_custom_type_script = "uid://diid208rf1hi1"
