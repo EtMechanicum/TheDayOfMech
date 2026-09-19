@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="SpecialEvent" format=3 uid="uid://cn6x8m510an81"]
 
 [ext_resource type="Texture2D" uid="uid://lclivc0p8gcs" path="res://assets/sprites/special_events/sock.png" id="1_wcq85"]
+[ext_resource type="AudioStream" uid="uid://bh1rakxih314d" path="res://assets/audio/songs/tdom_sock.mp3" id="2_l7c00"]
 [ext_resource type="Script" uid="uid://c14tglcu2xu1w" path="res://assets/resources/special_events/special_event.gd" id="2_nowi0"]
 
 [resource]
@@ -8,6 +9,7 @@ script = ExtResource("2_nowi0")
 name = "sock"
 dialogues = Array[String](["Uh. A sock.", "A sock.", "Mhmm. Alright.", "...", "...", "I wonder...", "I wonder who made you.", "Were you made in a factory?", "Or were you born by somebody's hands?", "...", "...", "Do you remember?", "Your maker, I mean.", "Did you use to have a home?", "Was it warm?", "...", "Yeah. I know. I know I'll never know.", "Isn't it sad?", "How the world forgets?", "Also.", "Isn't it great?", "That the world forgets?"])
 background = ExtResource("1_wcq85")
+ost = ExtResource("2_l7c00")
 condition = 19
 one_shot_event = true
 available = true

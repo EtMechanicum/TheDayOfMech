@@ -11,5 +11,6 @@ dialogues = Array[String](["My eyes hurt.", "Yet I feel good. And bad. Sick.", "
 background = ExtResource("1_su5ev")
 ost = ExtResource("2_bef3a")
 condition = 13
+one_shot_event = true
 available = true
 metadata/_custom_type_script = "uid://c14tglcu2xu1w"

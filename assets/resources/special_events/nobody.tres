@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="SpecialEvent" format=3 uid="uid://cta0qa8f8wb3i"]
 
 [ext_resource type="Texture2D" uid="uid://cr2mewt1job58" path="res://assets/sprites/wastelands-night.png" id="1_o400k"]
+[ext_resource type="AudioStream" uid="uid://di0pi5hysfwy7" path="res://assets/audio/songs/tdom_nobody.mp3" id="2_bh5t3"]
 [ext_resource type="Script" uid="uid://c14tglcu2xu1w" path="res://assets/resources/special_events/special_event.gd" id="2_owftc"]
 
 [resource]
@@ -8,6 +9,7 @@ script = ExtResource("2_owftc")
 name = "nobody"
 dialogues = Array[String](["Nobody.", "There's nobody.", "Not here at least.", "But I am.", "If I'm alone, do they exist? The other ones?", "If I lost my eyes, would the light still be out there?", "And they... Do they know that I am here?", "Do they know that I exist?", "I don't know.", "I don't know if they don't think about it,", "Or if they just decide not to care.", "And I?", "Do I care?", "Maybe  I've decided that I want to care, now.", "But tomorrow? ", "And the day after tomorrow?", "In a million years?", "Will I care?", "Probably not.", "It's cold. Not 'cold'. Just...", "The warmth is far away."])
 background = ExtResource("1_o400k")
+ost = ExtResource("2_bh5t3")
 condition = 8
 one_shot_event = true
 available = true

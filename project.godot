@@ -13,7 +13,7 @@ config_version=5
 config/name="VendingMachine"
 run/main_scene="uid://btj2dsaxqf8bj"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://bb8chytdxk1d4"
 
 [autoload]
 
