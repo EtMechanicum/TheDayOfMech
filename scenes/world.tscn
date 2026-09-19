@@ -87,9 +87,13 @@ func _on_spawn_customer_signal(customer: CustomerResource) -> void:
 
 func _on_despawn_customer_signal(customer: CustomerResource) -> void:
 	$\"TextureRect/Customer/CustomerSprite\".play(customer.name+\"_away\")
+	await $\"TextureRect/Customer/CustomerSprite\".animation_finished 
+	$\"TextureRect/Customer/CustomerSprite\".hide()
 
 func _on_happy_customer_signal(customer: CustomerResource) -> void:
 	$\"TextureRect/Customer/CustomerSprite\".play(customer.name+\"_bought\")
+	await $\"TextureRect/Customer/CustomerSprite\".animation_finished 
+	$\"TextureRect/Customer/CustomerSprite\".hide()
 
 func _on_ok_button_pressed():
 	var report = get_node(\"TextBox\")
@@ -398,9 +402,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e75v4")
 }],
-"loop": true,
+"loop": false,
 "name": &"adult_away",
-"speed": 3.5
+"speed": 2.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -418,9 +422,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eo1xk")
 }],
-"loop": true,
+"loop": false,
 "name": &"adult_bought",
-"speed": 5.0
+"speed": 2.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -472,9 +476,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_npbic")
 }],
-"loop": true,
+"loop": false,
 "name": &"kid_away",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -495,9 +499,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pq8jk")
 }],
-"loop": true,
+"loop": false,
 "name": &"kid_bought",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -562,9 +566,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n78cu")
 }],
-"loop": true,
+"loop": false,
 "name": &"rich_away",
-"speed": 5.0
+"speed": 4.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -582,9 +586,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kvmu4")
 }],
-"loop": true,
+"loop": false,
 "name": &"rich_bought",
-"speed": 3.5
+"speed": 2.5
 }, {
 "frames": [{
 "duration": 1.0,
